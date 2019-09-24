@@ -3,7 +3,8 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 function ToolMenu() {
   return (
-    <ul>
+    <ul className="toolMenu">
+        <div className="icon">?</div>
         <li>
           <ThemeSwitcher mode="off"></ThemeSwitcher>
         </li>

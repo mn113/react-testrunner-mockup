@@ -4,8 +4,11 @@ import Choice from './Choice';
 function Item() {
   return (
     <div className="item">
-        <Choice id="1"></Choice>
-        <Choice id="2"></Choice>
+        <p className="prompt">Lorem ipsum blah blah dipsum</p>
+        <Choice id="1" groupName="x"></Choice>
+        <Choice id="2" groupName="x"></Choice>
+        <Choice id="3" groupName="x"></Choice>
+        <Choice id="4" groupName="x"></Choice>
     </div>
   );
 }

@@ -1,22 +1,112 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.app header {
+  height: 4em;
+  background: dodgerblue;
+}
+header img {
+  border: 1px solid white;
+}
+.app footer {
+  height: 4em;
+  background: #222;
   color: white;
+  line-height: 2em;
 }
 
-.App-link {
-  color: #09d3ac;
+#page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
+.qti-ItemBody {
+  border: 1px dashed teal;
+  flex-grow: 1;
+  width: 60%;
+}
+.qti-choice {
+
+}
+
+.testNav {
+  border: 1px dashed red;
+  width: 90%;
+  height: 3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: center;
+}
+.testNav > button {
+  height: 48px;
+  width: 48px;
+  border-radius: 24px;
+  border: 3px solid black;
+  background: white;
+  margin: 8px;
+  cursor: pointer;
+}
+.testNav > button:first-child:after {
+  content: '←';
+  font-size: 48px;
+  position: relative;
+  top: -8px;
+  left: -4px;
+}
+.testNav > button:last-child:after {
+  content: '→';
+  font-size: 48px;
+  position: relative;
+  top: -8px;
+  left: -4px;
+}
+.testNav-pages {
+  border: 1px dashed greenyellow;
+  display: inline-block;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+button.navBubble {
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  border: 2px solid black;
+  background: white;
+  margin: 4px;
+  cursor: pointer;
+  transition: 0.4s background-color;
+}
+.navBubble:hover {
+  background: black;
+}
+
+.toolMenu {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+.toolMenu > div {
+  font-size: 36px;
+  font-weight: bold;
+  color: #666;
+}
+.toolMenu li {
+  display: none;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 1px 1px #999;
+  width: 8em;
+  height: 2em;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.toolMenu:hover li {
+  display: block;
 }

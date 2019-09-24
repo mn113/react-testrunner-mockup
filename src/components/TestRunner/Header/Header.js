@@ -3,7 +3,7 @@ import Logo from './Logo';
 
 function Header() {
   return (
-    <header className="App-header">
+    <header>
       <Logo src="img/logo.png" />
     </header>
   );
