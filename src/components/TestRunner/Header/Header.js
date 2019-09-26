@@ -1,10 +1,14 @@
 import React from 'react';
-import Logo from './Logo';
+import { FiMenu } from "react-icons/fi";
+import Breadcrumbs from './Breadcrumbs';
+import ToolMenu from './ToolMenu/ToolMenu';
 
-function Header() {
+function Header(props) {
   return (
     <header>
-      <Logo src="img/logo.png" />
+        <FiMenu></FiMenu>
+        <Breadcrumbs title={props.title}></Breadcrumbs>
+        <ToolMenu></ToolMenu>
     </header>
   );
 }
