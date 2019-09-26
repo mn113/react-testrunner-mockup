@@ -84,20 +84,31 @@ button.navBubble {
   margin: 4px;
   cursor: pointer;
   transition: 0.4s background-color;
+  position: relative;
 }
 .navBubble:hover {
   background: black;
   color: white;
 }
 .navBubble.connected-right:after {
-  content: '-';
-  color: #666;
-  position: relative;
-  right: -8px;
+  content: '';
+  height: 0;
+  width: 8px;
+  border-bottom: 1px solid #999;
+  position: absolute;
+  top: 16px;
+  right: -9px;
 }
-.navBubble.active {
-  background: blue;
+.navBubble.active,
+.navBubble.active:focus {
+  background: black;
   color: white;
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px black;
+}
+.navBubble:focus {
+  border: 2px solid black;
+  outline: none;
 }
 .overviewButton {
   height: 36px;
