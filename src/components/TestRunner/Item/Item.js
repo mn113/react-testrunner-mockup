@@ -1,4 +1,5 @@
 import React from 'react';
+import BookmarkTool from './BookmarkTool';
 
 function Item(props) {
     return (
@@ -47,7 +48,8 @@ function Item(props) {
 
             <section aria-label="question">
                 <h3 className="prompt">
-                    <span className="visually-hidden">Question: </span>The authors indicate that people value gift-giving because they feel it ...
+                    <span className="visually-hidden">Question: </span>
+                    The authors indicate that people value gift-giving because they feel it ...
                 </h3>
                 <button>A) functions as a form of self-expression.</button>
                 <button>eliminate answer A</button>
@@ -58,10 +60,7 @@ function Item(props) {
                 <button>C) requires the gift-recipient to reciprocate.</button>
                 <button>eliminate answer C</button>
                 <br/>
-                <div>
-                    <h3 id="flag_title" className="qti-visually-hidden">Flag for review.</h3>
-                    <button role="switch" aria-checked="false">Flag Question 7 for review.</button>
-                </div>
+                <BookmarkTool itemId={props.itemId}></BookmarkTool>
             </section>
         </article>
     );

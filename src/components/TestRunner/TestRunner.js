@@ -5,22 +5,45 @@ import Item from './Item/Item';
 import TestNavigation from './Navigation/TestNavigation';
 
 class TestRunner extends React.Component {
+
     constructor(props) {
         super(props);
         this.showItem = this.showItem.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
-        this.state = { activeItem: 1 };
+        this.bookmarkItem = this.bookmarkItem.bind(this);
+        this.toggleTheme = this.toggleTheme.bind(this);
+        this.state = {
+            theme: 'light',
+            activeItem: 1
+        };
+    }
+
+    bookmarkItem() {
+        
+    }
+
+    toggleTheme() {
+        this.setState({
+            theme: this.state.theme === 'light' ? 'dark' : 'light'
+        });
     }
 
     render() {
         return (
             <div className="app">
                 <JumpMenu></JumpMenu>
-                <Header title={this.props.data.testData.title} section="..."></Header>
+                <Header
+                    title={this.props.data.testData.title}
+                    section="..."
+                    toggleTheme={this.toggleTheme}>
+                </Header>
                 <section id="page">
-                    <main className="qti-ItemBody">
-                        <Item id={this.state.activeItem}></Item>
+                    <main id="main" className="qti-ItemBody">
+                        <Item
+                            id={this.state.activeItem}
+                            bookmarkItem={this.bookmarkItem}>
+                        </Item>
                     </main>
                     <TestNavigation
                         testMap={this.props.data.testMap}

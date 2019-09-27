@@ -30,7 +30,7 @@ class NavSection extends React.Component {
                         <span id="section_timer">8 minutes 22 seconds</span>
                     </h3>
                     <fieldset>
-                        <legend>Shopping in the USA</legend>
+                        <legend className="qti-visually-hidden">Shopping in the USA</legend>
                         {this.listItems}
                     </fieldset>
                 </ol>

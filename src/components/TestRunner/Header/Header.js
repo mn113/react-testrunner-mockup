@@ -6,15 +6,19 @@ import ToolMenu from './ToolMenu/ToolMenu';
 function Header(props) {
   return (
     <header>
-        <button aria-label="main menu">
+        <button aria-label="main menu" className="menu-button">
             <FiMenu></FiMenu>
         </button>
         <h1 id="assessment_name">
-            <Breadcrumbs title={props.title}></Breadcrumbs>
-            Reading & Understanding - Part 1 of 2: The American Dream
-            <span id="demo" aria-label="Time remaining in this part: ">09:59</span>
+            <Breadcrumbs
+                testTitle={'Reading & Understanding'}
+                sectionTitle={'The American Dream'}
+                sectionNo={1}
+                sectionsTotal={2}>
+            </Breadcrumbs>
+            <span id="demo-timer" aria-label="Time remaining in this part: ">09:59</span>
         </h1>
-        <ToolMenu></ToolMenu>
+        <ToolMenu toggleTheme={props.toggleTheme}></ToolMenu>
     </header>
   );
 }

@@ -7,6 +7,7 @@ function NavigationBubble(props) {
         <li className={buttonClasses + isActiveClass}>
             <label htmlFor="txt">
                 <input
+                    className="qti-visibility-hidden"
                     role="link"
                     aria-label="Question 1. Answered"
                     type="radio"

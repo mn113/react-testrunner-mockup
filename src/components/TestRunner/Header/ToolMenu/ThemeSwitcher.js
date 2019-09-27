@@ -1,10 +1,12 @@
 import React from 'react';
 
-function ThemeSwitcher() {
+function ThemeSwitcher(props) {
+  const toggleTheme = () => {
+    props.toggleTheme(); 
+  };
+
   return (
-    <label>
-        <input type="checkbox" className="toggle" />Dark mode
-    </label>
+    <button onClick={toggleTheme}>Light/dark mode</button>
   );
 }
 

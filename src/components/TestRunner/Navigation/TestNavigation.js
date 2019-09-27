@@ -21,7 +21,7 @@ class TestNavigation extends React.Component {
 
     render() {
         return (
-            <nav className="testNav">
+            <nav id="navigation" className="testNav">
                 <h2 className="qti-visually-hidden">Navigation</h2>
                 <NavigationButton dir="next" move={this.props.moveForward}></NavigationButton>
                 <NavigationButton dir="prev" move={this.props.moveBack}></NavigationButton>                

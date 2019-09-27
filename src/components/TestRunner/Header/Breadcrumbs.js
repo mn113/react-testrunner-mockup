@@ -1,13 +1,14 @@
 import React from 'react';
 
-function Breadcrumbs(props) {
-  return (
-    <aside>
-      <span>{props.title}</span>
-      <span className="sep">&gt;</span>
-      <span>Section Title</span>
-    </aside>
-  );
+function Breadcrumbs({ testTitle, sectionTitle, sectionNo, sectionsTotal}) {
+    return (
+        <aside className="test-breadcrumb">
+            <span>{testTitle}</span>
+            <span className="sep">&gt;</span>
+            <span>{sectionTitle}</span>
+            <span>[{sectionNo}/{sectionsTotal}]</span>
+        </aside>
+    );
 }
 
 export default Breadcrumbs;

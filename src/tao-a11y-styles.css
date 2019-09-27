@@ -1,60 +1,33 @@
 .qti-visually-hidden {
   opacity: 0.25;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 0px;
+  left: -10000px;
   color: lightgray;
 }
 
 .qti-visually-hidden:focus {
   opacity: 1;
+  height: auto;
 }
 
 .jump-link {
   opacity: 0.25;
+  display: block;
 }
 
 .jump-link:focus {
   opacity: 1;
 }
 
-#next{
-  cursor: pointer;
-  display: inline;
-  margin-left: 95%;
-  margin-right: 5%;
-}
-
-#overview{
-  cursor: pointer;
-  display: inline;
-  margin-left: 85%;
-  margin-right: 15%;
-}
-
-#previous{
-  cursor: pointer;
-  display: inline;
-  margin-left: 0%;
-  margin-right: 95%;
-}
-
-button{
+button {
   cursor: pointer;
 }
 
-ol {
+ol, ul {
   list-style-type: none;
-  display: inline-block;
-  width: 33%;
-}
-
-li{
-  float: left;
-}
-
-article{
-  width: 50%;
-}
-
-aside {
-  margin-left: auto;
-  margin-right: 5%;
+  list-style-position: inside;
+  padding-left: 0;
 }

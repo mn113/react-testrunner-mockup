@@ -1,4 +1,6 @@
 .app {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  color: #161616;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,15 +27,44 @@
 }
 
 /**
+ * HEADER
+ */
+.menu-button {
+  border: none;
+  background: none;
+}
+.menu-button svg {
+  font-size: 36px;
+  font-weight: bold;
+  color: #767676;
+}
+.test-breadcrumb {
+  display: inline;
+}
+.test-breadcrumb span {
+  margin: 0 0.25rem;
+}
+h1 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+}
+
+/**
  * ITEM
  */
 .qti-ItemBody {
-  border: 1px dashed teal;
+  xborder: 1px dashed teal;
   flex-grow: 1;
   width: 60%;
 }
 .qti-choice {
 
+}
+.bookmark-tool {
+  position: absolute;
+  right: 1rem;
+  bottom: 5rem;
 }
 
 /**
@@ -41,7 +72,9 @@
  */
  .testNav {
   height: 4rem;
+  max-height: 4rem;
   width: 100%;
+  overflow-y: hidden;
   display: flex;
   flex-direction: row;
   justify-content: stretch;
@@ -49,32 +82,65 @@
   box-shadow: 0 -3px 2px 2px rgba(0,0,0,0.2);
 }
 .testNav button.prev,
-.testNav button.next {
+.testNav button.next,
+.button-large-circle {
   height: 48px;
   width: 48px;
   border-radius: 24px;
   border: 2px solid black;
   background: white;
   margin: 12px;
+  line-height: 52px;
   cursor: pointer;
+}
+.testNav button.prev {
+  order: 1;
+}
+.testNav button.next {
+  order: 4;
+}
+.overviewButton {
+  height: 36px;
+  width: unset;
+  border-radius: 18px;
+  border: 2px solid black;
+  text-transform: uppercase;
+  line-height: 36px;
+  order: 3;
+}
+.testNav > button > svg {
+  font-size: 20px;
+  stroke-width: 3px;
 }
 .testNav > button.primary {
   background-color: blue;
   border-color: blue;
   color: white;
 }
-.testNav > button > svg {
-  font-size: 20px;
-  stroke-width: 3px;
-}
-.testNav-pages {
-  border: 1px dashed greenyellow;
+.testNav-sections {
+  xborder: 1px dashed greenyellow;
   display: inline-block;
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  order: 2;
 }
-button.navBubble {
+.testNav-sections > li {
+  display: inline-block;
+}
+.testNav-sections > li ol {
+  xborder: 1px dashed salmon;
+}
+fieldset {
+  border: 0;
+  background: rgb(255,255,255);
+  background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 49%, rgba(153,153,153,1) 50%, rgba(255,255,255,0) 51%, rgba(255,255,255,0) 100%);
+  background-clip: content-box;
+}
+.navBubble {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   height: 36px;
   width: 36px;
   border-radius: 18px;
@@ -86,18 +152,15 @@ button.navBubble {
   transition: 0.4s background-color;
   position: relative;
 }
+.navBubble input {
+  display: none;
+}
+.navBubble label {
+  cursor: pointer;
+}
 .navBubble:hover {
   background: black;
   color: white;
-}
-.navBubble.connected-right:after {
-  content: '';
-  height: 0;
-  width: 8px;
-  border-bottom: 1px solid #999;
-  position: absolute;
-  top: 16px;
-  right: -9px;
 }
 .navBubble.active,
 .navBubble.active:focus {
@@ -110,18 +173,7 @@ button.navBubble {
   border: 2px solid black;
   outline: none;
 }
-.overviewButton {
-  height: 36px;
-  width: unset;
-  border-radius: 18px;
-  border: 2px solid black;
-  text-transform: uppercase;
-  line-height: 36px;
-}
-ol {
-  list-style: none;
-  list-style-position: inside;
-}
+
 
 /**
  * MENUS
@@ -131,22 +183,24 @@ ol {
   top: 10px;
   right: 20px;
 }
-.toolMenu > div {
+.toolMenu > svg {
   font-size: 36px;
   font-weight: bold;
-  color: #666;
+  color: #767676;
 }
-.toolMenu li {
+.toolMenu .popup-menu {
   display: none;
   background: white;
   border: 1px solid #ccc;
   box-shadow: 0 0 1px 1px #999;
-  width: 8rem;
-  height: 2rem;
+  width: 10rem;
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
 }
-.toolMenu:hover li {
+.toolMenu:hover .popup-menu {
+  display: block;
+}
+.toolMenu button {
   display: block;
 }
