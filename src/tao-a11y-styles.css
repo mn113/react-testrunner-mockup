@@ -1,0 +1,60 @@
+.qti-visually-hidden {
+  opacity: 0.25;
+  color: lightgray;
+}
+
+.qti-visually-hidden:focus {
+  opacity: 1;
+}
+
+.jump-link {
+  opacity: 0.25;
+}
+
+.jump-link:focus {
+  opacity: 1;
+}
+
+#next{
+  cursor: pointer;
+  display: inline;
+  margin-left: 95%;
+  margin-right: 5%;
+}
+
+#overview{
+  cursor: pointer;
+  display: inline;
+  margin-left: 85%;
+  margin-right: 15%;
+}
+
+#previous{
+  cursor: pointer;
+  display: inline;
+  margin-left: 0%;
+  margin-right: 95%;
+}
+
+button{
+  cursor: pointer;
+}
+
+ol {
+  list-style-type: none;
+  display: inline-block;
+  width: 33%;
+}
+
+li{
+  float: left;
+}
+
+article{
+  width: 50%;
+}
+
+aside {
+  margin-left: auto;
+  margin-right: 5%;
+}

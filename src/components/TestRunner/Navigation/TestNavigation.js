@@ -1,33 +1,37 @@
 import React from 'react';
 import NavigationButton from './NavigationButton';
-import NavigationBubble from './NavigationBubble';
 import OverviewButton from './OverviewButton';
+import NavSection from './NavSection';
 
-function TestNavigation(props) {
-    console.log(props);
-    const numbers = [];
-    for (let n = 1; n < 15; n++) {
-        numbers.push(n);
+class TestNavigation extends React.Component {
+
+    constructor(props) {
+        console.log(props);
+        super(props);
+        this.sections = [1,2].map(s => {
+            return (
+                <NavSection
+                    sectionId={s}
+                    key={s.toString()}
+                    showItem={props.showItem}>
+                </NavSection>
+            );
+        });
     }
-    const listItems = numbers.map(n =>
-        <NavigationBubble
-            label={n}
-            key={n.toString()}
-            showItem={props.showItem}
-            isInformational={n <= 3}
-            isActive={n === props.activeItem}>
-        </NavigationBubble>
-    );
-  return (
-    <nav className="testNav">
-        <NavigationButton dir="prev" move={props.moveBack}></NavigationButton>
-        <ol className="testNav-pages">
-            {listItems}
-        </ol>
-        <OverviewButton></OverviewButton>
-        <NavigationButton dir="next" move={props.moveForward}></NavigationButton>
-    </nav>
-  );
+
+    render() {
+        return (
+            <nav className="testNav">
+                <h2 className="qti-visually-hidden">Navigation</h2>
+                <NavigationButton dir="next" move={this.props.moveForward}></NavigationButton>
+                <NavigationButton dir="prev" move={this.props.moveBack}></NavigationButton>                
+                <OverviewButton></OverviewButton>
+                <ol className="testNav-sections">
+                    {this.sections}
+                </ol>
+            </nav>
+        );
+    }
 }
 
 export default TestNavigation;

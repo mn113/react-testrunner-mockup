@@ -1,4 +1,5 @@
 import React from 'react';
+import JumpMenu from './Header/JumpMenu';
 import Header from './Header/Header';
 import Item from './Item/Item';
 import TestNavigation from './Navigation/TestNavigation';
@@ -15,11 +16,12 @@ class TestRunner extends React.Component {
     render() {
         return (
             <div className="app">
+                <JumpMenu></JumpMenu>
                 <Header title={this.props.data.testData.title} section="..."></Header>
                 <section id="page">
-                    <div className="qti-ItemBody">
+                    <main className="qti-ItemBody">
                         <Item id={this.state.activeItem}></Item>
-                    </div>
+                    </main>
                     <TestNavigation
                         testMap={this.props.data.testMap}
                         showItem={this.showItem}
