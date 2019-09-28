@@ -6,16 +6,18 @@ class NavSection extends React.Component {
     constructor(props) {
         console.log(props);
         super(props);
+
+        const groupSizes = [3,8,5];
         const numbers = [];
-        for (let n = 1; n < 7; n++) {
-            numbers.push(n);
+        for (let n = 0; n < groupSizes[props.sectionId]; n++) {
+            numbers.push(n+1);
         }
         this.listItems = numbers.map(n =>
             <NavigationBubble
                 label={n}
                 key={n.toString()}
                 showItem={props.showItem}
-                isInformational={n <= 1}
+                isInformational={props.sectionId === 0}
                 isActive={n === props.activeItem}>
             </NavigationBubble>
         );
@@ -23,7 +25,7 @@ class NavSection extends React.Component {
 
     render() {
         return (
-            <li className="nav-item">
+            <li className="nav-section">
                 <ol>
                     <h3 className="qti-visually-hidden">
                         Question Group 1 of 2: Shopping in the USA. The remaining time for this group is

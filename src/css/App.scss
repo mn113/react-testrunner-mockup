@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
+
+$themeBlue: #224999;
+$themeBlueHighlight: #4469bb;
+$strongest: #000000; // ?
+$weakest: #FFFFFF; // ?
+
+.test-runner {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #161616;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+
+    .jump-menu {
+        position: absolute;
+        top: 3rem;
+    }
+
+    #page {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4rem;
+    }
+}
+
+
+/**
+ * HEADER
+ */
+ .top-bar {
+    height: 3rem;
+    background: white;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    z-index: 1;
+
+    .menu-button {
+        border: none;
+        background: none;
+        margin-left: 15px;
+
+        svg {
+            font-size: 24px;
+            font-weight: bold;
+            color: #767676;
+        }
+    }
+
+    h1 {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.2rem;
+
+        .test-breadcrumb {
+            display: inline;
+            span {
+                margin: 0 0.4rem;
+            }
+        }
+        .timer {
+            background: #e8e8e8;
+            border: 1px solid #999;
+            border-radius: 8px;
+            padding: 2px 4px;
+        }
+    }
+
+    .toolMenu {
+        // position: absolute;
+        // top: 10px;
+        // right: 20px;
+        margin-left: auto;
+        margin-right: 15px;
+
+        & > svg {
+            font-size: 24px;
+            font-weight: bold;
+            color: #767676;
+        }
+        .popup-menu {
+            display: none;
+            background: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 1px 1px #999;
+            width: 10rem;
+            position: absolute;
+            top: 30px;
+            right: 10px;
+        }
+        &:hover .popup-menu {
+            display: block;
+        }
+        button {
+            display: block;
+            width: 100%;
+            &:hover {
+                background-color: #ccc;
+            }
+        }
+    }
+}
+
+
+/**
+ * ITEM
+ */
+main {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+
+    .qti-itemBody {
+        width: 60%;
+        margin: 0 auto;
+    }
+}
+.bookmark-tool {
+    position: absolute;
+    right: 1rem;
+    bottom: 5rem;
+    button {
+        line-height: 50px;
+        font-size: 1.2rem;
+        &:hover {
+            background-color: $themeBlue;
+            border-color: $themeBlue;
+        }
+        &.active {
+            background: black;
+            color: white;
+        }
+    }
+}
+
+
+/**
+ * BUTTONS
+ */
+.button-large-circle {
+    height: 48px;
+    min-width: 48px;
+    border-radius: 24px;
+    border: 2px solid black;
+    background: white;
+    margin: 12px;
+    line-height: 52px;
+    cursor: pointer;
+    &.scaling:hover {
+        svg {
+            transform: scale(1.2);
+        }
+    }
+}
+button.primary {
+    background-color: $themeBlue;
+    border-color: $themeBlue;
+    color: white;
+    &:hover {
+        background-color: $themeBlueHighlight;
+        border-color: $themeBlueHighlight;
+    }
+}
+button.secondary {
+    &:hover {
+        background-color: #ddd;
+        border-color: #222;
+    }
+}
+
+
+/**
+ * TEST NAVIGATION
+ */
+.testNav {
+    height: 4rem;
+    min-height: 4rem;
+    width: 100%;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    box-shadow: 0 -2px 4px 1px rgba(0,0,0,0.2);
+
+    button.prev {
+        order: 1;
+    }
+    button.next {
+        order: 4;
+    }
+    .overviewButton {
+        height: 36px;
+        width: unset;
+        border-radius: 18px;
+        border: 2px solid black;
+        text-transform: uppercase;
+        line-height: 36px;
+        order: 3;
+    }
+    & > button > svg {
+        font-size: 20px;
+        stroke-width: 3px;
+    }
+    .testNav-sections {
+        margin: 0;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-grow: 1;
+        justify-content: center;
+        order: 2;
+
+        & > li {
+            display: inline-block;
+
+            ol {
+                xborder: 1px dashed salmon;
+            }
+        }
+        fieldset {
+            border: 0;
+            background: rgb(255,255,255);
+            background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 49%, rgba(153,153,153,1) 50%, rgba(255,255,255,0) 51%, rgba(255,255,255,0) 100%);
+            background-clip: content-box;
+
+            .navBubble {
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                height: 36px;
+                width: 36px;
+                border-radius: 18px;
+                border: 1px solid #767676;
+                background: white;
+                transition: 0.25s background-color;
+                margin: 6px;
+                padding: 0;
+                position: relative;
+                font-weight: bold;
+                color: #666;
+                cursor: pointer;
+
+                &:first-of-type {
+                    margin-left: 0;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                input {
+                    display: none;
+                }
+                label {
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                }
+                &:hover {
+                    background: black;
+                    color: white;
+                }
+                &:focus {
+                    border: 2px solid black;
+                    outline: none;
+                }
+                &.active,
+                &.active:focus {
+                    background: black;
+                    color: white;
+                    border: 2px solid white;
+                    box-shadow: 0 0 0 2px black;
+                }
+                svg.informational {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+}

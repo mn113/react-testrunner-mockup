@@ -5,7 +5,7 @@ import ToolMenu from './ToolMenu/ToolMenu';
 
 function Header(props) {
   return (
-    <header>
+    <header className="top-bar">
         <button aria-label="main menu" className="menu-button">
             <FiMenu></FiMenu>
         </button>
@@ -16,7 +16,7 @@ function Header(props) {
                 sectionNo={1}
                 sectionsTotal={2}>
             </Breadcrumbs>
-            <span id="demo-timer" aria-label="Time remaining in this part: ">09:59</span>
+            <span className="timer" id="demo-timer" aria-label="Time remaining in this part: ">09:59</span>
         </h1>
         <ToolMenu toggleTheme={props.toggleTheme}></ToolMenu>
     </header>

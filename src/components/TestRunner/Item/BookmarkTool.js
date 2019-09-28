@@ -6,7 +6,7 @@ class BookmarkTool extends React.Component {
         return (
             <div className="bookmark-tool">
                 <h3 id="flag_title" className="qti-visually-hidden">Flag for review.</h3>
-                <button role="switch" aria-checked="false" className="button-large-circle">
+                <button role="switch" aria-checked="false" className="button-large-circle scaling secondary">
                     <FiBookmark></FiBookmark>
                     <span className="qti-visually-hidden">Flag Question 7 for review.</span>
                 </button>

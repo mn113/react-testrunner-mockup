@@ -7,23 +7,23 @@ function NavigationButton(props) {
     return (
       <button
         aria-label="go to previous question"
-        className="navButton prev"
+        className="button-large-circle navButton scaling prev secondary"
         value="prev"
         onClick={props.move.bind(this)}>
         <FiArrowLeft></FiArrowLeft>
       </button>
-    );  
+    );
   }
   else if (props.dir === 'next') {
     return (
       <button
         aria-label="go to next question"
-        className="navButton next primary" 
+        className="button-large-circle navButton scaling next primary"
         value="next"
         onClick={props.move.bind(this)}>
         <FiArrowRight></FiArrowRight>
       </button>
-    );  
+    );
   }
   return null;
 }

@@ -8,7 +8,7 @@ class TestNavigation extends React.Component {
     constructor(props) {
         console.log(props);
         super(props);
-        this.sections = [1,2].map(s => {
+        this.sections = [0,1,2].map(s => {
             return (
                 <NavSection
                     sectionId={s}

@@ -3,7 +3,7 @@ import BookmarkTool from './BookmarkTool';
 
 function Item(props) {
     return (
-        <article aria-labelledby="question_title">
+        <article aria-labelledby="question_title" className="qti-itemBody">
             <h2 id="question_title" className="visually-hidden">
                 Question 7 of 14  - unanswered. In Question Group 1 of 2.
             </h2>
@@ -60,8 +60,9 @@ function Item(props) {
                 <button>C) requires the gift-recipient to reciprocate.</button>
                 <button>eliminate answer C</button>
                 <br/>
-                <BookmarkTool itemId={props.itemId}></BookmarkTool>
             </section>
+
+            <BookmarkTool itemId={props.itemId}></BookmarkTool>
         </article>
     );
 }

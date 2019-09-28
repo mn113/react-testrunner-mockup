@@ -1,4 +1,5 @@
 import React from 'react';
+import { TiInfoLarge } from 'react-icons/ti';
 
 function NavigationBubble(props) {
     const buttonClasses = 'navBubble';
@@ -15,7 +16,7 @@ function NavigationBubble(props) {
                     id="txt"
                     value="txt"
                     onClick={props.showItem.bind(this, props.label)} />
-                { props.isInformational && 'i' }
+                { props.isInformational && <TiInfoLarge className="informational"></TiInfoLarge> }
                 { !props.isInformational && props.label.toString().padStart(2,'0') }
             </label>
         </li>
