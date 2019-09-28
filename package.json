@@ -24,5 +24,9 @@
       "last 2 firefox versions",
       "last 2 safari versions"
     ]
+  },
+  "devDependencies": {
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0"
   }
 }
