@@ -1,15 +1,16 @@
 import React from 'react';
+import Choice from './Choice';
 import BookmarkTool from './BookmarkTool';
 
 function Item(props) {
     return (
         <article aria-labelledby="question_title" className="qti-itemBody">
-            <h2 id="question_title" className="not-visually-hidden">
+            <h2 id="question_title" className="qti-visually-hidden">
                 Question {props.itemId} of 14  - unanswered. In Question Group {props.sectionId} of 2.
             </h2>
 
             <section aria-label="reading passage">
-                <h3 id="passage_title"><span className="qti-visually-hidden">Passage: </span>Shopping in the USA</h3>
+                <h3 id="passage_title"><span className="not-visually-hidden">Passage: </span>{props.itemData.title}</h3>
                 <p>Every day, millions of shoppers hit the stores in
                     full force—both online and on foot—searching
                     frantically for the perfect gift. Last year, Americans
@@ -18,7 +19,7 @@ function Item(props) {
                     gifts, most people regularly buy presents for other
                     occasions throughout the year, including weddings,
                     birthdays, anniversaries, graduations, and baby
-                    showers. This frequent experience of gift-giving can
+                    showers. <span className="qti-visually-hidden">This frequent experience of gift-giving can
                     engender ambivalent feelings in gift-givers. Many
                     relish the opportunity to buy presents because
                     gift-giving offers a powerful means to build stronger
@@ -43,7 +44,7 @@ function Item(props) {
                     psychologists. Research has found that people often
                     struggle to take account of others’ perspectives—
                     their insights are subject to egocentrism, social
-                    projection, and multiple attribution errors.</p>
+                    projection, and multiple attribution errors.</span></p>
             </section>
 
             <section aria-label="question">
@@ -51,22 +52,54 @@ function Item(props) {
                     <span className="qti-visually-hidden">Question: </span>
                     The authors indicate that people value gift-giving because they feel it ...
                 </h3>
-                <button>A) functions as a form of self-expression.</button>
-                <button>eliminate answer A</button>
-                <br/>
-                <button>B) is an inexpensive way to show appreciation.</button>
-                <button>eliminate answer B</button>
-                <br/>
-                <button>C) requires the gift-recipient to reciprocate.</button>
-                <button>eliminate answer C</button>
-                <br/>
+
+                <div className="qti-choices">
+                    <Choice
+                        group={`${props.sectionId}_${props.itemId}`}
+                        letter="A"
+                        text="functions as a form of self-expression"
+                        eliminable="true"
+                        sectionId={props.sectionId}
+                        itemId={props.itemId}
+                        markItemAnswered={props.markItemAnswered}>
+                    </Choice>
+                    <Choice
+                        group={`${props.sectionId}_${props.itemId}`}
+                        letter="B"
+                        text="is an inexpensive way to show appreciation"
+                        eliminable="true"
+                        sectionId={props.sectionId}
+                        itemId={props.itemId}
+                        markItemAnswered={props.markItemAnswered}>
+                    </Choice>
+                    <Choice
+                        group={`${props.sectionId}_${props.itemId}`}
+                        letter="C"
+                        text="requires the gift-recipient to reciprocate"
+                        eliminable="true"
+                        sectionId={props.sectionId}
+                        itemId={props.itemId}
+                        markItemAnswered={props.markItemAnswered}>
+                    </Choice>
+                    <Choice
+                        group={`${props.sectionId}_${props.itemId}`}
+                        letter="D"
+                        text="makes Christmas a success"
+                        eliminable="true"
+                        sectionId={props.sectionId}
+                        itemId={props.itemId}
+                        markItemAnswered={props.markItemAnswered}>
+                    </Choice>
+                </div>
             </section>
 
             <BookmarkTool
                 itemId={props.itemId}
                 sectionId={props.sectionId}
                 isBookmarked={props.isBookmarked}
-                bookmarkItem={props.bookmarkItem}></BookmarkTool>
+                // funcs
+                bookmarkItem={props.bookmarkItem}>
+            </BookmarkTool>
         </article>
     );
 }

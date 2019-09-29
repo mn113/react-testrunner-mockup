@@ -9,9 +9,9 @@ import './css/index.css';
 import './css/App.scss';
 import './css/tao-a11y-styles.css';
 
-import testData from './data/QtiRunnerData.json';
+import data from './data/testData.json';
 
-ReactDOM.render(<TestRunner data={testData}></TestRunner>, document.getElementById('app'));
+ReactDOM.render(<TestRunner data={data}></TestRunner>, document.getElementById('app'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

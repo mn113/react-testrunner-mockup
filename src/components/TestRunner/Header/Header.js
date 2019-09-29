@@ -11,10 +11,10 @@ function Header(props) {
         </button>
         <h1 id="assessment_name">
             <Breadcrumbs
-                testTitle={'Reading & Understanding'}
-                sectionTitle={'The American Dream'}
-                sectionNo={1}
-                sectionsTotal={2}>
+                testTitle={props.testTitle}
+                sectionTitle={props.sectionData.title}
+                sectionNo={props.sectionData.position + 1}
+                sectionsTotal={3}>
             </Breadcrumbs>
             <span className="timer" id="demo-timer" aria-label="Time remaining in this part: ">09:59</span>
         </h1>

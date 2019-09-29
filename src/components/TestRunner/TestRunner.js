@@ -1,4 +1,6 @@
 import React from 'react';
+import { set } from 'object-path-immutable';
+
 import JumpMenu from './Header/JumpMenu';
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -7,63 +9,199 @@ import TestNavigation from './Navigation/TestNavigation';
 class TestRunner extends React.Component {
 
     constructor(props) {
+        console.log(props);
         super(props);
         this.showItem = this.showItem.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
         this.bookmarkItem = this.bookmarkItem.bind(this);
         this.toggleTheme = this.toggleTheme.bind(this);
+        this.markItemAnswered = this.markItemAnswered.bind(this);
 
         this.state = {
             theme: 'light',
-            activeSectionId: 1,
-            activeItemId: 5,
-            bookmarksMap: {0: {}, 1: {}, 2: {}}
+            sectionsMap: props.data.testMap.parts["testPart-1"].sections,
+            activeSectionId: props.data.testContext.sectionId,
+            activeItemId: props.data.testContext.itemIdentifier,
+            bookmarks: {}
         };
     }
 
+    componentDidMount() {
+        // start by marking current item as viewed
+        this.markItemViewed({
+            sectionId: this.state.activeSectionId,
+            itemId: this.state.activeItemId
+        });
+    }
+
+    /**
+     * Toggles the test runner theme stylesheet
+     * @affects {TestRunner.state}
+     */
     toggleTheme() {
-        this.setState({
-            theme: this.state.theme === 'light' ? 'dark' : 'light'
-        });
+        this.setState((state, props) => ({
+            theme: state.theme === 'light' ? 'dark' : 'light'
+        }));
     }
 
+    /**
+     * Toggles the bookmark status for a specific item in the test runner
+     * @param {String} sectionId
+     * @param {String} itemId
+     * @affects {TestRunner.state}
+     */
     bookmarkItem({ sectionId, itemId }) {
-        console.log('bkmk', sectionId, itemId );
-        // set multi-level state
-        // section may not be defined yet, so create it
-        if (!(sectionId in Object.keys(this.state.bookmarksMap))) {
-            this.setState({
-                bookmarksMap: Object.assign(this.state.bookmarksMap, {
-                    [sectionId]: {}
-                })
-            });
-        }
-        // item value may not be defined yet, but it's ok, we'll set it true
-        this.setState({
-            bookmarksMap: Object.assign(this.state.bookmarksMap, {
-                [sectionId]: Object.assign(this.state.bookmarksMap[sectionId], {
-                    [itemId]: !this.state.bookmarksMap[sectionId][itemId]
-                })
+        const key = `${sectionId}_${itemId}`;
+        this.setState((state, props) => ({
+            bookmarks: Object.assign(state.bookmarks, {
+                [key]: !state.bookmarks[key]
             })
-        });
+        }));
     }
 
+    /**
+     * Shows a specific item in the test runner
+     * @param {String} sectionId
+     * @param {String} itemId
+     * @affects {TestRunner.state}
+     */
     showItem({ sectionId, itemId }) {
-        console.log('si', sectionId, itemId );
-        this.setState({ activeSectionId: sectionId, activeItemId: itemId });
+        this.setState((state, props) => ({
+            activeSectionId: sectionId,
+            activeItemId: itemId
+            // sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'viewed'], true)
+        }));
+        this.markItemViewed({ sectionId, itemId });
     }
 
+    /**
+     * Marks a specific item as viewed
+     * @param {String} sectionId
+     * @param {String} itemId
+     * @affects {TestRunner.state}
+     */
+    markItemViewed({ sectionId, itemId }) {
+        this.setState((state, props) => ({
+            sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'viewed'], true)
+        }));
+    }
+
+    /**
+     * Marks a specific item as answered
+     * @param {String} sectionId
+     * @param {String} itemId
+     * @affects {TestRunner.state}
+     */
+    markItemAnswered({ sectionId, itemId }) {
+        this.setState((state, props) => ({
+            sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'answered'], true)
+        }));
+    }
+
+    /**
+     * Gets the data pertaining to the active section
+     * @returns {Object} section data
+     */
+    getActiveSection() {
+        return this.state.sectionsMap[this.state.activeSectionId];
+    }
+
+    /**
+     * Gets the data pertaining to the active item
+     * @returns {Object} item data
+     */
+    getActiveItem() {
+        return this.getActiveSection().items[this.state.activeItemId];
+    }
+
+    /**
+     * Gets all the items in a given section
+     * @returns {Object} items as { id: {data} }
+     */
+    getItems(sectionId) {
+        console.log('gi', sectionId);
+        return this.state.sectionsMap[sectionId].items;
+    }
+
+    /**
+     * Gets the identifier of the next section
+     * @returns {String}
+     */
+    getNextSectionId() {
+        const currentSectionPos = this.getActiveSection().position;
+        const nextSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => v.position === currentSectionPos + 1)[0];
+        return nextSection ? nextSection[0] : null;
+    }
+
+    /**
+     * Gets the identifier of the previous section
+     * @returns {String}
+     */
+    getPreviousSectionId() {
+        const currentSectionPos = this.getActiveSection().position;
+        const prevSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => v.position === currentSectionPos - 1)[0];
+        return prevSection ? prevSection[0] : null;
+    }
+
+    /**
+     * Gets the data pertaining to the previous section
+     * @returns {Object}
+     */
+    getPreviousSection() {
+        const id = this.getPreviousSectionId();
+        return id ? this.state.sectionsMap[id] : null;
+    }
+
+    /**
+     * Moves forward to the next item or section
+     */
     moveForward() {
         console.log('mf');
-        // TODO: check max
-        this.setState({ activeItemId: this.state.activeItemId + 1 });
+        const currentPos = this.getActiveItem().positionInSection;
+        const currentSection = this.getActiveSection();
+        const maxPos = Object.keys(currentSection.items).length - 1;
+        if (currentPos < maxPos) {
+            this.moveTo(this.state.activeSectionId, currentPos + 1);
+        }
+        else {
+            const nextSectionId = this.getNextSectionId();
+            if (!nextSectionId) return;
+            this.moveTo(nextSectionId, 0); // ok
+        }
     }
 
+    /**
+     * Moves back to the previous item or section
+     */
     moveBack() {
-        // TODO: check min
         console.log('mb');
-        this.setState({ activeItemId: this.state.activeItemId - 1 });
+        const currentPos = this.getActiveItem().positionInSection;
+        const minPos = 0;
+        if (currentPos > minPos) {
+            this.moveTo(this.state.activeSectionId, currentPos - 1);
+        }
+        else {
+            const previousSectionId = this.getPreviousSectionId();
+            const previousSection = this.getPreviousSection();
+            if (!previousSection) return;
+            const previousSectionEnd = Object.keys(previousSection.items).length - 1;
+            this.moveTo(previousSectionId, previousSectionEnd);
+        }
+    }
+
+    /**
+     * Move anywhere within the test part
+     * @param {String} sectionId
+     * @param {Integer} pos
+     * @affects {TestRunner.state}
+     */
+    moveTo(sectionId, pos) {
+        console.log('moveTo', sectionId, pos);
+        if (typeof sectionId === 'undefined' || typeof pos === 'undefined') return;
+
+        const itemId = Object.entries(this.getItems(sectionId)).filter(([k,v]) => v.position === pos )[0][0];
+        this.showItem({ sectionId, itemId });
     }
 
     render() {
@@ -72,26 +210,31 @@ class TestRunner extends React.Component {
                 <link rel="stylesheet" type="text/css" href={`themes/${this.state.theme}.css`} />
                 <JumpMenu></JumpMenu>
                 <Header
-                    title={this.props.data.testData.title}
-                    section="..."
+                    testTitle={this.props.data.testData.title}
+                    sectionData={this.state.sectionsMap[this.state.activeSectionId]}
+                    // funcs
                     toggleTheme={this.toggleTheme}>
                 </Header>
                 <main id="main" className="qti-itemBody">
                     <Item
+                        itemData={this.state.sectionsMap[this.state.activeSectionId].items[this.state.activeItemId]}
                         sectionId={this.state.activeSectionId}
                         itemId={this.state.activeItemId}
-                        isBookmarked={this.state.bookmarksMap[this.state.activeSectionId][this.state.activeItemId]}
-                        bookmarkItem={this.bookmarkItem}>
+                        isBookmarked={this.state.bookmarks[`${this.state.activeSectionId}_${this.state.activeItemId}`]}
+                        // funcs
+                        bookmarkItem={this.bookmarkItem}
+                        markItemAnswered={this.markItemAnswered}>
                     </Item>
                 </main>
                 <TestNavigation
-                    testMap={this.props.data.testMap}
+                    sectionsMap={this.state.sectionsMap}
+                    bookmarks={this.state.bookmarks}
+                    activeSectionId={this.state.activeSectionId}
+                    activeItemId={this.state.activeItemId}
+                    // funcs
                     showItem={this.showItem}
                     moveForward={this.moveForward}
-                    moveBack={this.moveBack}
-                    bookmarksMap={this.state.bookmarksMap}
-                    activeSectionId={this.state.activeSectionId}
-                    activeItemId={this.state.activeItemId}>
+                    moveBack={this.moveBack}>
                 </TestNavigation>
             </div>
         );

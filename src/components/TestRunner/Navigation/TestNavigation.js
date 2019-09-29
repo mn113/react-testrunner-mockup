@@ -18,13 +18,15 @@ class TestNavigation extends React.Component {
                 <NavigationButton dir="prev" move={this.props.moveBack}></NavigationButton>
                 <OverviewButton></OverviewButton>
                 <ol className="testNav-sections">
-                    {[0,1,2].map(newSectionId =>
+                    {Object.entries(this.props.sectionsMap).map(([sectionId, sectionData]) =>
                         <NavSection
-                            sectionId={newSectionId}
-                            key={`s${newSectionId}`}
-                            bookmarksMap={this.props.bookmarksMap}
+                            key={sectionId}
+                            sectionId={sectionId}
+                            sectionData={sectionData}
+                            bookmarks={this.props.bookmarks}
                             activeSectionId={this.props.activeSectionId}
                             activeItemId={this.props.activeItemId}
+                            // funcs
                             showItem={this.props.showItem}>
                         </NavSection>
                     )}

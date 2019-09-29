@@ -5,10 +5,11 @@ import { FaBookmark } from "react-icons/fa";
 
 const propTypes = {
     showItem: PropTypes.func.isRequired,
-    itemId: PropTypes.number.isRequired,
-    sectionId: PropTypes.number.isRequired,
+    itemId: PropTypes.string.isRequired,
+    sectionId: PropTypes.string.isRequired,
     isInformational: PropTypes.bool,
-    isActive: PropTypes.bool.isRequired
+    isActive: PropTypes.bool,
+    isViewed: PropTypes.bool
 };
 
 const defaultProps = {
@@ -18,7 +19,7 @@ const defaultProps = {
 // class NavigationBubble extends React.Component {
 function NavigationBubble(props) {
     return (
-        <li className={'navBubble ' + (props.isActive ? 'active' : '')}>
+        <li className={'navBubble ' + (props.isActive ? 'active ' : '') + (props.isViewed ? 'viewed ' : '') + (props.isAnswered ? 'answered ' : '')}>
             <label htmlFor="txt">
                 <input
                     className="qti-visibility-hidden"
@@ -30,7 +31,7 @@ function NavigationBubble(props) {
                 />
                 <span className="bubble-content" onClick={props.showItem.bind(null, props)}>
                     { props.isInformational && <TiInfoLarge className="informational"></TiInfoLarge> }
-                    { !props.isInformational && props.itemId.toString().padStart(2,'0') }
+                    { !props.isInformational && (props.itemData.positionInPart + 1).toString().padStart(2,'0') }
                     { props.isBookmarked && <FaBookmark className="mini-indicator"></FaBookmark>}
                 </span>
             </label>

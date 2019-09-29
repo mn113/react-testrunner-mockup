@@ -2,6 +2,7 @@
 
 $themeBlue: #224999;
 $themeBlueHighlight: #4469bb;
+$themeBluePale: #cce0f8;
 $strongest: #000000; // ?
 $weakest: #FFFFFF; // ?
 
@@ -119,6 +120,21 @@ main {
         margin: 0 auto;
         color: #444;
         line-height: 1.6;
+
+        .qti-choice {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.4rem;
+
+            label {
+                input {
+                    margin-right: 1rem;
+                }
+            }
+            button {
+                width: 10rem;
+            }
+        }
     }
 }
 .bookmark-tool {
@@ -203,8 +219,18 @@ button.secondary {
         border-radius: 18px;
         border: 2px solid black;
         text-transform: uppercase;
-        line-height: 36px;
         order: 3;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        line-height: 1;
+        padding: 0.2rem 0.6rem;
+
+        &:hover {
+            background-color: $themeBlueHighlight;
+            border-color: $themeBlueHighlight;
+            color: white;
+        }
     }
     & > button > svg {
         font-size: 20px;
@@ -220,10 +246,6 @@ button.secondary {
 
         & > li {
             display: inline-block;
-
-            ol {
-                xborder: 1px dashed salmon;
-            }
         }
         fieldset {
             border: 0;
@@ -239,6 +261,7 @@ button.secondary {
                 width: 36px;
                 border-radius: 20px;
                 border: 1px solid #767676;
+                box-shadow: 0 0 0 2px transparent;
                 background: white;
                 transition: 0.25s background-color;
                 margin: 6px;
@@ -264,6 +287,7 @@ button.secondary {
                     }
 
                     .bubble-content {
+                        cursor: pointer;
                         display: flex;
                     }
                 }
@@ -275,9 +299,17 @@ button.secondary {
                     border: 2px solid black;
                     outline: none;
                 }
+                &.viewed {
+                    background-color: $themeBluePale;
+                    color: #234;
+                }
+                &.answered {
+                    background-color: $themeBlue;
+                    color: white;
+                }
                 &.active,
                 &.active:focus {
-                    background: black;
+                    background-color: black;
                     color: white;
                     border: 2px solid white;
                     box-shadow: 0 0 0 2px black;

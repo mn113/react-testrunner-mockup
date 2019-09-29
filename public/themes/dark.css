@@ -9,12 +9,12 @@
     background-color: #444;
     color: #f4f4f4;
 }
-.qti-itemBody {
+main .qti-itemBody {
     color: #bbb;
 }
 .bookmark-tool button:hover {
-    background-color: #224999;
-    border-color: #224999;
+    background-color: #ba2025;
+    border-color: #ba2025;
 }
 .bookmark-tool button.active {
     background: white;
@@ -25,13 +25,13 @@
     background: black;
 }
 button.primary {
-    background-color: #224999;
-    border-color: #224999;
+    background-color: #ba2025;
+    border-color: #ba2025;
     color: black;
 }
 button.primary:hover {
-    background-color: #4469bb;
-    border-color: #4469bb;
+    background-color: #da4045;
+    border-color: #da4045;
 }
 button.secondary:hover {
     background-color: #ddd;
@@ -42,6 +42,11 @@ button.secondary:hover {
 }
 .overview-button {
     border: 2px solid white;
+}
+.overview-button:hover {
+    background-color: #da4045;
+    border-color: #da4045;
+    color: black;
 }
 fieldset {
     background: #222;

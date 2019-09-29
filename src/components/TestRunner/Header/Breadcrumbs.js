@@ -5,7 +5,7 @@ function Breadcrumbs({ testTitle, sectionTitle, sectionNo, sectionsTotal}) {
         <aside className="test-breadcrumb">
             <span>{testTitle}</span>
             <span className="sep">/</span>
-            <span>Part {sectionNo} of {sectionsTotal} : {sectionTitle}</span>
+            <span>Section {sectionNo} of {sectionsTotal} : {sectionTitle}</span>
         </aside>
     );
 }

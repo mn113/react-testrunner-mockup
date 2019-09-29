@@ -1,17 +1,15 @@
 import React from 'react';
 
-class Choice extends React.Component {
-    render() {
-        return (
-            <div className="item qti-choice">
-                <label>
-                    <input type="radio" name="{this.props.groupName}" />
-                    Text
-                    <img src="" alt="qti choice" />
-                </label>
-            </div>
-        );
-    }
+function Choice(props) {
+    return (
+        <div className="qti-choice">
+            <label>
+                <input type="radio" name={props.group} onClick={props.markItemAnswered.bind(null, props)}/>
+                {props.letter}. {props.text}
+            </label>
+            {props.eliminable && <button>Eliminate answer {props.letter}</button>}
+        </div>
+    );
 }
 
 export default Choice;
