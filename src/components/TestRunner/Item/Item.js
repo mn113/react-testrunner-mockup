@@ -4,12 +4,12 @@ import BookmarkTool from './BookmarkTool';
 function Item(props) {
     return (
         <article aria-labelledby="question_title" className="qti-itemBody">
-            <h2 id="question_title" className="visually-hidden">
-                Question 7 of 14  - unanswered. In Question Group 1 of 2.
+            <h2 id="question_title" className="not-visually-hidden">
+                Question {props.itemId} of 14  - unanswered. In Question Group {props.sectionId} of 2.
             </h2>
 
             <section aria-label="reading passage">
-                <h3 id="passage_title"><span className="visually-hidden">Passage: </span>Shopping in the USA</h3>
+                <h3 id="passage_title"><span className="qti-visually-hidden">Passage: </span>Shopping in the USA</h3>
                 <p>Every day, millions of shoppers hit the stores in
                     full force—both online and on foot—searching
                     frantically for the perfect gift. Last year, Americans
@@ -48,7 +48,7 @@ function Item(props) {
 
             <section aria-label="question">
                 <h3 className="prompt">
-                    <span className="visually-hidden">Question: </span>
+                    <span className="qti-visually-hidden">Question: </span>
                     The authors indicate that people value gift-giving because they feel it ...
                 </h3>
                 <button>A) functions as a form of self-expression.</button>
@@ -62,7 +62,11 @@ function Item(props) {
                 <br/>
             </section>
 
-            <BookmarkTool itemId={props.itemId}></BookmarkTool>
+            <BookmarkTool
+                itemId={props.itemId}
+                sectionId={props.sectionId}
+                isBookmarked={props.isBookmarked}
+                bookmarkItem={props.bookmarkItem}></BookmarkTool>
         </article>
     );
 }
