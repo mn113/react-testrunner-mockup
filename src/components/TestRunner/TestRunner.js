@@ -11,19 +11,20 @@ class TestRunner extends React.Component {
     constructor(props) {
         console.log(props);
         super(props);
-        this.showItem = this.showItem.bind(this);
+        this.toggleTheme = this.toggleTheme.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
+        this.showItem = this.showItem.bind(this);
         this.bookmarkItem = this.bookmarkItem.bind(this);
-        this.toggleTheme = this.toggleTheme.bind(this);
-        this.markItemAnswered = this.markItemAnswered.bind(this);
+        this.setResponse = this.setResponse.bind(this);
 
         this.state = {
             theme: 'light',
             sectionsMap: props.data.testMap.parts["testPart-1"].sections,
             activeSectionId: props.data.testContext.sectionId,
             activeItemId: props.data.testContext.itemIdentifier,
-            bookmarks: {}
+            bookmarks: {},
+            responses: {}
         };
     }
 
@@ -60,6 +61,22 @@ class TestRunner extends React.Component {
         }));
     }
 
+    /**
+     * Sets the response variable for a specific item in the test runner
+     * @param {String} sectionId
+     * @param {String} itemId
+     * @param {String} letter
+     * @affects {TestRunner.state}
+     */
+    setResponse({ sectionId, itemId, letter }) {
+        const key = `${sectionId}_${itemId}`;
+        this.setState((state, props) => ({
+            responses: Object.assign(state.responses, {
+                [key]: letter
+            })
+        }));
+        this.markItemAnswered({ sectionId, itemId });
+    }
     /**
      * Shows a specific item in the test runner
      * @param {String} sectionId
@@ -221,9 +238,10 @@ class TestRunner extends React.Component {
                         sectionId={this.state.activeSectionId}
                         itemId={this.state.activeItemId}
                         isBookmarked={this.state.bookmarks[`${this.state.activeSectionId}_${this.state.activeItemId}`]}
+                        response={this.state.responses[`${this.state.activeSectionId}_${this.state.activeItemId}`]}
                         // funcs
                         bookmarkItem={this.bookmarkItem}
-                        markItemAnswered={this.markItemAnswered}>
+                        setResponse={this.setResponse}>
                     </Item>
                 </main>
                 <TestNavigation

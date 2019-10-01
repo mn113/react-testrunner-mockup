@@ -2,7 +2,27 @@ import React from 'react';
 import Choice from './Choice';
 import BookmarkTool from './BookmarkTool';
 
+const choices = [
+    {
+        letter: 'A',
+        text: 'functions as a form of self-expression'
+    },
+    {
+        letter: 'B',
+        text: 'is an inexpensive way to show appreciation'
+    },
+    {
+        letter: 'C',
+        text: 'requires the gift-recipient to reciprocate'
+    },
+    {
+        letter: 'D',
+        text: 'makes Christmas a success'
+    }
+];
+
 function Item(props) {
+    // this.forceUpdate();
     return (
         <article aria-labelledby="question_title" className="qti-itemBody">
             <h2 id="question_title" className="qti-visually-hidden">
@@ -54,42 +74,20 @@ function Item(props) {
                 </h3>
 
                 <div className="qti-choices">
-                    <Choice
-                        group={`${props.sectionId}_${props.itemId}`}
-                        letter="A"
-                        text="functions as a form of self-expression"
-                        eliminable="true"
-                        sectionId={props.sectionId}
-                        itemId={props.itemId}
-                        markItemAnswered={props.markItemAnswered}>
-                    </Choice>
-                    <Choice
-                        group={`${props.sectionId}_${props.itemId}`}
-                        letter="B"
-                        text="is an inexpensive way to show appreciation"
-                        eliminable="true"
-                        sectionId={props.sectionId}
-                        itemId={props.itemId}
-                        markItemAnswered={props.markItemAnswered}>
-                    </Choice>
-                    <Choice
-                        group={`${props.sectionId}_${props.itemId}`}
-                        letter="C"
-                        text="requires the gift-recipient to reciprocate"
-                        eliminable="true"
-                        sectionId={props.sectionId}
-                        itemId={props.itemId}
-                        markItemAnswered={props.markItemAnswered}>
-                    </Choice>
-                    <Choice
-                        group={`${props.sectionId}_${props.itemId}`}
-                        letter="D"
-                        text="makes Christmas a success"
-                        eliminable="true"
-                        sectionId={props.sectionId}
-                        itemId={props.itemId}
-                        markItemAnswered={props.markItemAnswered}>
-                    </Choice>
+                    {choices.map((c) => (
+                        <Choice
+                            group={`${props.sectionId}_${props.itemId}`}
+                            key={c.letter}
+                            letter={c.letter}
+                            text={c.text}
+                            eliminable="true"
+                            sectionId={props.sectionId}
+                            itemId={props.itemId}
+                            response={props.response}
+                            // funcs
+                            setResponse={props.setResponse}>
+                        </Choice>
+                    ))}
                 </div>
             </section>
 
