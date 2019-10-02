@@ -1,0 +1,130 @@
+$themeRed: #ba2025;
+$themeRedHighlight: #da4045;
+$themeRedPale: #6b2b22;
+
+.theme-dark {
+    background: #2c2c2c;
+
+    .test-runner,
+    .top-bar,
+    .popup-menu
+    {
+        background-color: #222;
+        color: #f4f4f4;
+    }
+    .top-bar {
+        border-bottom: 1px solid #0f0f0f;
+        h1 .timer {
+            background-color: #444;
+            color: #f4f4f4;
+            border: 1px solid #777;
+        }
+        .menu-button, .tool-menu {
+            svg {
+                color: #999;
+            }
+        }
+    }
+    main {
+        .qti-itemBody {
+            color: #bbb;
+            .qti-choice {
+                button {
+                    background: #444;
+                    color: #e0e0e0;
+                }
+            }
+        }
+    }
+    .bookmark-tool {
+        button {
+            &:hover {
+                background-color: #767676;
+                border-color: #767676;
+            }
+            &.active {
+                background: white;
+                color: black;
+            }
+        }
+        &.bookmarked {
+            button {
+                color: $themeRed;
+            }
+        }
+    }
+    .button-large-circle {
+        border: 2px solid white;
+        background: black;
+    }
+    button {
+        &.primary {
+            background-color: $themeRed;
+            border-color: $themeRed;
+            color: black;
+            &:hover {
+                background-color: $themeRedHighlight;
+                border-color: $themeRedHighlight;
+            }
+        }
+        &.secondary {
+            background-color: #444;
+            border-color: #666;
+            color: white;
+            &:hover {
+                background-color: #767676;
+            }
+        }
+    }
+    .testNav {
+        background-color: #222;
+        box-shadow: 0 -2px 4px 1px rgba(255,0,0,0.2);
+        .overview-button {
+            background: #444;
+            border: 2px solid #767676;
+            color: white;
+            &:hover {
+                background-color: $themeRedHighlight;
+                border-color: $themeRedHighlight;
+                color: black;
+            }
+        }
+        fieldset {
+            background: #222;
+            background: linear-gradient(0deg, rgba(34,34,34,0) 0%, rgba(34,34,34,0) 49%, rgba(153,153,153,1) 50%, rgba(34,34,34,0) 51%, rgba(34,34,34,0) 100%);
+            background-clip: content-box;
+
+            .navBubble {
+                border: 1px solid #767676;
+                background: black;
+                color: #ddd;
+                &:hover {
+                    background: white;
+                    color: black;
+                }
+                &:focus {
+                    border: 2px solid white;
+                    outline: none;
+                }
+                &.viewed {
+                    background-color: $themeRedPale;
+                    color: white;
+                }
+                &.answered {
+                    background-color: $themeRed;
+                    color: black;
+                }
+                &.active,
+                &.active:focus {
+                    color: black;
+                    background-color: white;
+                    border: 2px solid black;
+                    box-shadow: 0 0 0 2px white;
+                }
+                svg.mini-indicator {
+                    color: $themeRed;
+                }
+            }
+        }
+    }
+}

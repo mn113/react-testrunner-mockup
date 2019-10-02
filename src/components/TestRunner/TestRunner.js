@@ -6,6 +6,9 @@ import Header from './Header/Header';
 import Item from './Item/Item';
 import TestNavigation from './Navigation/TestNavigation';
 
+import '../../css/themes/light.scss';
+import '../../css/themes/dark.scss';
+
 class TestRunner extends React.Component {
 
     constructor(props) {
@@ -42,7 +45,7 @@ class TestRunner extends React.Component {
      */
     toggleTheme() {
         this.setState((state, props) => ({
-            theme: state.theme === 'light' ? 'dark' : 'light'
+            theme: state.theme === 'light' ? 'dark' : 'light',
         }));
     }
 
@@ -77,6 +80,7 @@ class TestRunner extends React.Component {
         }));
         this.markItemAnswered({ sectionId, itemId });
     }
+
     /**
      * Shows a specific item in the test runner
      * @param {String} sectionId
@@ -223,8 +227,7 @@ class TestRunner extends React.Component {
 
     render() {
         return (
-            <div className="test-runner">
-                <link rel="stylesheet" type="text/css" href={`themes/${this.state.theme}.css`} />
+            <div className={`test-runner theme-${this.state.theme}`}>
                 <JumpMenu></JumpMenu>
                 <Header
                     testTitle={this.props.data.testData.title}

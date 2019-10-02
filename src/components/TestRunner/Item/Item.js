@@ -22,7 +22,6 @@ const choices = [
 ];
 
 function Item(props) {
-    // this.forceUpdate();
     return (
         <article aria-labelledby="question_title" className="qti-itemBody">
             <h2 id="question_title" className="qti-visually-hidden">

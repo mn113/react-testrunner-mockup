@@ -1,16 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
 
-$themeBlue: #224999;
-$themeBlueHighlight: #4469bb;
-$themeBluePale: #cce0f8;
-$strongest: #000000; // ?
-$weakest: #FFFFFF; // ?
 
 .test-runner {
     font-family: 'Source Sans Pro', Arial, sans-serif;
     font-size: 16px;
     line-height: 1.4;
-    color: #161616;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -30,8 +24,6 @@ $weakest: #FFFFFF; // ?
  */
  .top-bar {
     height: 3rem;
-    background: white;
-    border-bottom: 1px solid #f0f0f0;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -47,7 +39,6 @@ $weakest: #FFFFFF; // ?
         svg {
             font-size: 24px;
             font-weight: bold;
-            color: #767676;
         }
     }
 
@@ -63,8 +54,6 @@ $weakest: #FFFFFF; // ?
             }
         }
         .timer {
-            background: #e8e8e8;
-            border: 1px solid #999;
             border-radius: 8px;
             padding: 2px 4px;
             font-size: 0.8rem;
@@ -118,7 +107,6 @@ main {
     .qti-itemBody {
         width: 60%;
         margin: 0 auto;
-        color: #444;
         line-height: 1.6;
 
         .qti-choice {
@@ -144,16 +132,6 @@ main {
     button {
         line-height: 50px;
         font-size: 1.2rem;
-        &:hover {
-            background-color: $themeBlue;
-            border-color: $themeBlue;
-        }
-    }
-    &.bookmarked {
-        button {
-            background: black;
-            color: white;
-        }
     }
 }
 
@@ -165,8 +143,6 @@ main {
     height: 48px;
     min-width: 48px;
     border-radius: 28px;
-    border: 2px solid black;
-    background: white;
     margin: 12px;
     line-height: 52px;
     cursor: pointer;
@@ -174,21 +150,6 @@ main {
         svg {
             transform: scale(1.2);
         }
-    }
-}
-button.primary {
-    background-color: $themeBlue;
-    border-color: $themeBlue;
-    color: white;
-    &:hover {
-        background-color: $themeBlueHighlight;
-        border-color: $themeBlueHighlight;
-    }
-}
-button.secondary {
-    &:hover {
-        background-color: #ddd;
-        border-color: #222;
     }
 }
 
@@ -203,9 +164,8 @@ button.secondary {
     overflow-y: hidden;
     display: flex;
     flex-direction: row;
-    justify-content: stretch;
+    justify-content: space-around;
     align-items: center;
-    box-shadow: 0 -2px 4px 1px rgba(0,0,0,0.2);
 
     button.prev {
         order: 1;
@@ -217,7 +177,6 @@ button.secondary {
         height: 36px;
         width: unset;
         border-radius: 18px;
-        border: 2px solid black;
         text-transform: uppercase;
         order: 3;
         font-size: 0.85rem;
@@ -225,12 +184,6 @@ button.secondary {
         align-items: center;
         line-height: 1;
         padding: 0.2rem 0.6rem;
-
-        &:hover {
-            background-color: $themeBlueHighlight;
-            border-color: $themeBlueHighlight;
-            color: white;
-        }
     }
     & > button > svg {
         font-size: 20px;
@@ -240,7 +193,6 @@ button.secondary {
         margin: 0;
         display: flex;
         flex-wrap: nowrap;
-        flex-grow: 1;
         justify-content: center;
         order: 2;
 
@@ -249,79 +201,60 @@ button.secondary {
         }
         fieldset {
             border: 0;
-            background: rgb(255,255,255);
-            background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 49%, rgba(153,153,153,1) 50%, rgba(255,255,255,0) 51%, rgba(255,255,255,0) 100%);
-            background-clip: content-box;
+            padding: 0;
+            margin: 0 0.6rem;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            align-items: center;
 
-            .navBubble {
-                display: inline-flex;
-                justify-content: center;
+            ol {
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
                 align-items: center;
-                height: 36px;
-                width: 36px;
-                border-radius: 20px;
-                border: 1px solid #767676;
-                box-shadow: 0 0 0 2px transparent;
-                background: white;
-                transition: 0.25s background-color;
-                margin: 6px;
-                padding: 0;
-                position: relative;
-                font-weight: bold;
-                color: #767676;
-                cursor: pointer;
 
-                &:first-of-type {
-                    margin-left: 0;
-                }
-                &:last-child {
-                    margin-right: 0;
-                }
-
-                label {
-                    display: flex;
+                .navBubble {
+                    display: inline-flex;
+                    justify-content: center;
                     align-items: center;
+                    height: 36px;
+                    width: 36px;
+                    border-radius: 20px;
+                    box-shadow: 0 0 0 2px transparent;
+                    transition: 0.25s background-color;
+                    margin: 6px;
+                    padding: 0;
+                    position: relative;
+                    font-weight: bold;
+                    cursor: pointer;
 
-                    input {
-                        display: none;
+                    &:first-of-type {
+                        margin-left: 0;
                     }
-
-                    .bubble-content {
-                        cursor: pointer;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    label {
                         display: flex;
+                        align-items: center;
+
+                        input {
+                            display: none;
+                        }
+                        .bubble-content {
+                            cursor: pointer;
+                            display: flex;
+                        }
                     }
-                }
-                &:hover {
-                    background: black;
-                    color: white;
-                }
-                &:focus {
-                    border: 2px solid black;
-                    outline: none;
-                }
-                &.viewed {
-                    background-color: $themeBluePale;
-                    color: #234;
-                }
-                &.answered {
-                    background-color: $themeBlue;
-                    color: white;
-                }
-                &.active,
-                &.active:focus {
-                    background-color: black;
-                    color: white;
-                    border: 2px solid white;
-                    box-shadow: 0 0 0 2px black;
-                }
-                svg.informational {
-                    font-size: 1.4rem;
-                }
-                svg.mini-indicator {
-                    position: absolute;
-                    bottom: -6px;
-                    right: -6px;
-                    color: $themeBlue;
+                    svg.informational {
+                        font-size: 1.4rem;
+                    }
+                    svg.mini-indicator {
+                        position: absolute;
+                        bottom: -6px;
+                        right: -6px;
+                    }
                 }
             }
         }
