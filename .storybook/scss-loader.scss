@@ -1,0 +1,10 @@
+//@import 'normalize.css';
+@import '../src/css/index.css';
+@import '../src/css/App.scss';
+@import '../src/css/tao-a11y-styles.css';
+@import '../src/css/themes/light.scss';
+@import '../src/css/themes/dark.scss';
+
+html {
+    color: $themeBlue;
+}
