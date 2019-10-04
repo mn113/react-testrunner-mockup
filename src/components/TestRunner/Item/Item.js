@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Choice from './Choice';
 import BookmarkTool from './BookmarkTool';
 
@@ -22,6 +22,12 @@ const choices = [
 ];
 
 function Item(props) {
+    // Similar to componentDidMount and componentDidUpdate:
+    useEffect(() => {
+      // Update the document title using the browser API
+      document.title = props.itemData.title;
+    });
+
     return (
         <article aria-labelledby="question_title" className="qti-itemBody">
             <h2 id="question_title" className="qti-visually-hidden">
