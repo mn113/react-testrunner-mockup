@@ -17,7 +17,7 @@
     "css-loader": "2.1.1",
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
-    "eslint": "^6.1.0",
+    "eslint": "^6.5.1",
     "eslint-config-react-app": "^5.0.2",
     "eslint-loader": "3.0.0",
     "eslint-plugin-flowtype": "3.13.0",
@@ -85,7 +85,8 @@
     "@storybook/addon-knobs": "^5.2.1",
     "@storybook/addon-links": "^5.2.1",
     "@storybook/addons": "^5.2.1",
-    "@storybook/react": "^5.2.1"
+    "@storybook/react": "^5.2.1",
+    "eslint-plugin-jest": "^22.17.0"
   },
   "jest": {
     "roots": [

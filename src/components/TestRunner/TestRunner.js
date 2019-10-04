@@ -44,7 +44,7 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     toggleTheme() {
-        this.setState((state, props) => ({
+        this.setState((state) => ({
             theme: state.theme === 'light' ? 'dark' : 'light',
         }));
     }
@@ -57,7 +57,7 @@ class TestRunner extends React.Component {
      */
     bookmarkItem({ sectionId, itemId }) {
         const key = `${sectionId}_${itemId}`;
-        this.setState((state, props) => ({
+        this.setState((state) => ({
             bookmarks: Object.assign(state.bookmarks, {
                 [key]: !state.bookmarks[key]
             })
@@ -73,7 +73,7 @@ class TestRunner extends React.Component {
      */
     setResponse({ sectionId, itemId, letter }) {
         const key = `${sectionId}_${itemId}`;
-        this.setState((state, props) => ({
+        this.setState((state) => ({
             responses: Object.assign(state.responses, {
                 [key]: letter
             })
@@ -88,7 +88,7 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     showItem({ sectionId, itemId }) {
-        this.setState((state, props) => ({
+        this.setState(() => ({
             activeSectionId: sectionId,
             activeItemId: itemId
             // sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'viewed'], true)
@@ -103,7 +103,7 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     markItemViewed({ sectionId, itemId }) {
-        this.setState((state, props) => ({
+        this.setState((state) => ({
             sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'viewed'], true)
         }));
     }
@@ -115,7 +115,7 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     markItemAnswered({ sectionId, itemId }) {
-        this.setState((state, props) => ({
+        this.setState((state) => ({
             sectionsMap: set(state.sectionsMap, [sectionId, 'items', itemId, 'answered'], true)
         }));
     }
