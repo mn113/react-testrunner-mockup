@@ -19,6 +19,6 @@ it('renders without crashing', () => {
             showItem={() => {}}
         />
         , div);
-    expect(div.innerHTML.toMatch(/class="navBubble/));
+    expect(div.innerHTML).toMatch(/class="navBubble/);
     ReactDOM.unmountComponentAtNode(div);
 });
