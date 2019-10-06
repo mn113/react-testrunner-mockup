@@ -142,13 +142,21 @@ main {
             justify-content: space-between;
             margin-bottom: 0.4rem;
 
+            &.eliminated {
+                label {
+                    color: #999;
+                    text-decoration: line-through;
+                    pointer-events: none;
+                }
+            }
+
             label {
                 input {
                     margin-right: 1rem;
                 }
             }
             button {
-                width: 10rem;
+                width: 11rem;
             }
         }
     }

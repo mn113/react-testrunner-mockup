@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -15,8 +15,15 @@ const defaultProps = {
 };
 
 function Choice(props) {
+    const [isEliminated, toggleEliminated] = useState(false);
+
+    const eliminate = (e) => {
+        e.preventDefault();
+        toggleEliminated(!isEliminated);
+    };
+
     return (
-        <div className="qti-choice">
+        <div className={'qti-choice ' + (isEliminated ? 'eliminated' : '')}>
             <label>
                 <input
                     type="radio"
@@ -27,7 +34,7 @@ function Choice(props) {
                 />
                 {props.letter}. {props.text}
             </label>
-            {props.eliminable && <button>Eliminate answer {props.letter}</button>}
+            {props.eliminable && <button onClick={eliminate}>{isEliminated ? 'Une' : 'E'}liminate answer {props.letter}</button>}
         </div>
     );
 }
