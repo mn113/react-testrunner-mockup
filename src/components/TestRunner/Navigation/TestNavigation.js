@@ -1,39 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NavigationButton from './NavigationButton';
 import OverviewButton from './OverviewButton';
 import NavSection from './NavSection';
 
-class TestNavigation extends React.Component {
+const propTypes = {
+    activeItemId: PropTypes.string.isRequired,
+    activeSectionId: PropTypes.string.isRequired,
+    sectionsMap: PropTypes.object.isRequired,
+    bookmarks: PropTypes.object,
+    moveForward: PropTypes.func,
+    moveBack: PropTypes.func,
+    showItem: PropTypes.func
+};
 
-    constructor(props) {
-        console.log(props);
-        super(props);
-    }
+const defaultProps = {
+    isBookmarked: false,
+};
 
-    render() {
-        return (
-            <nav id="navigation" className="testNav">
-                <h2 className="qti-visually-hidden">Navigation</h2>
-                <NavigationButton dir="next" move={this.props.moveForward}></NavigationButton>
-                <NavigationButton dir="prev" move={this.props.moveBack}></NavigationButton>
-                <OverviewButton></OverviewButton>
-                <ol className="testNav-sections">
-                    {Object.entries(this.props.sectionsMap).map(([sectionId, sectionData]) =>
-                        <NavSection
-                            key={sectionId}
-                            sectionId={sectionId}
-                            sectionData={sectionData}
-                            bookmarks={this.props.bookmarks}
-                            activeSectionId={this.props.activeSectionId}
-                            activeItemId={this.props.activeItemId}
-                            // funcs
-                            showItem={this.props.showItem}>
-                        </NavSection>
-                    )}
-                </ol>
-            </nav>
-        );
-    }
+// class TestNavigation extends React.Component {
+function TestNavigation(props) {
+    return (
+        <nav id="navigation" className="testNav">
+            <h2 className="qti-visually-hidden">Navigation</h2>
+            <NavigationButton dir="next" move={props.moveForward}></NavigationButton>
+            <NavigationButton dir="prev" move={props.moveBack}></NavigationButton>
+            <OverviewButton></OverviewButton>
+            <ol className="testNav-sections">
+                {Object.entries(props.sectionsMap).map(([sectionId, sectionData]) =>
+                    <NavSection
+                        key={sectionId}
+                        sectionId={sectionId}
+                        sectionData={sectionData}
+                        bookmarks={props.bookmarks}
+                        activeSectionId={props.activeSectionId}
+                        activeItemId={props.activeItemId}
+                        // funcs
+                        showItem={props.showItem}>
+                    </NavSection>
+                )}
+            </ol>
+        </nav>
+    );
 }
+
+TestNavigation.propTypes = propTypes;
+TestNavigation.defaultProps = defaultProps;
 
 export default TestNavigation;

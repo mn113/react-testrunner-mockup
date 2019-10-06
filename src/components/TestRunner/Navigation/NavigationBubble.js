@@ -7,9 +7,12 @@ const propTypes = {
     showItem: PropTypes.func.isRequired,
     itemId: PropTypes.string.isRequired,
     sectionId: PropTypes.string.isRequired,
+    itemData: PropTypes.object,
     isInformational: PropTypes.bool,
     isActive: PropTypes.bool,
-    isViewed: PropTypes.bool
+    isViewed: PropTypes.bool,
+    isAnswered: PropTypes.bool,
+    isBookmarked: PropTypes.bool
 };
 
 const defaultProps = {

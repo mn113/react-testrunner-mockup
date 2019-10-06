@@ -1,5 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FiBookmark } from "react-icons/fi";
+
+const propTypes = {
+    itemId: PropTypes.string.isRequired,
+    isBookmarked: PropTypes.bool,
+    bookmarkItem: PropTypes.func
+};
+
+const defaultProps = {
+    isBookmarked: false,
+};
 
 function BookmarkTool(props) {
     return (
@@ -16,5 +27,8 @@ function BookmarkTool(props) {
         </div>
     );
 }
+
+BookmarkTool.propTypes = propTypes;
+BookmarkTool.defaultProps = defaultProps;
 
 export default BookmarkTool;

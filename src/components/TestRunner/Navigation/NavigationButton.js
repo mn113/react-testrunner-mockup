@@ -1,6 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FiArrowLeft } from 'react-icons/fi';
 import { FiArrowRight } from 'react-icons/fi';
+
+const propTypes = {
+  move: PropTypes.func.isRequired,
+  dir: PropTypes.string.isRequired
+};
 
 function NavigationButton(props) {
   if (props.dir === 'prev') {
@@ -27,5 +33,7 @@ function NavigationButton(props) {
   }
   return null;
 }
+
+NavigationButton.propTypes = propTypes;
 
 export default NavigationButton;

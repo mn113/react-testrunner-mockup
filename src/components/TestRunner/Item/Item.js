@@ -1,6 +1,17 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Choice from './Choice';
 import BookmarkTool from './BookmarkTool';
+
+const propTypes = {
+    itemId: PropTypes.string.isRequired,
+    sectionId: PropTypes.string.isRequired,
+    itemData: PropTypes.object.isRequired,
+    response: PropTypes.string,
+    setResponse: PropTypes.func.isRequired,
+    isBookmarked: PropTypes.bool,
+    bookmarkItem: PropTypes.func
+};
 
 const choices = [
     {
@@ -106,5 +117,7 @@ function Item(props) {
         </article>
     );
 }
+
+Item.propTypes = propTypes;
 
 export default Item;

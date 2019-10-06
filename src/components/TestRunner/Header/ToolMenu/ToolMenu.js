@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ThemeSwitcher from './ThemeSwitcher';
 import { FiSettings } from "react-icons/fi";
+
+const propTypes = {
+    toggleTheme: PropTypes.func
+};
 
 function ToolMenu(props) {
     return (
@@ -20,5 +25,7 @@ function ToolMenu(props) {
         </aside>
     );
 }
+
+ToolMenu.propTypes = propTypes;
 
 export default ToolMenu;

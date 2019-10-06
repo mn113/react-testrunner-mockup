@@ -1,4 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+  toggleTheme: PropTypes.func.isRequired
+};
 
 function ThemeSwitcher(props) {
   const [theme, setTheme] = useState('light');
@@ -12,5 +17,7 @@ function ThemeSwitcher(props) {
     <button onClick={toggleTheme}>Light/dark mode</button>
   );
 }
+
+ThemeSwitcher.propTypes = propTypes;
 
 export default ThemeSwitcher;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { set } from 'object-path-immutable';
 
 import JumpMenu from './Header/JumpMenu';
@@ -8,6 +9,10 @@ import TestNavigation from './Navigation/TestNavigation';
 
 import '../../css/themes/light.scss';
 import '../../css/themes/dark.scss';
+
+const propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 class TestRunner extends React.Component {
 
@@ -151,7 +156,7 @@ class TestRunner extends React.Component {
      */
     getNextSectionId() {
         const currentSectionPos = this.getActiveSection().position;
-        const nextSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => v.position === currentSectionPos + 1)[0];
+        const nextSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => k && v.position === currentSectionPos + 1)[0];
         return nextSection ? nextSection[0] : null;
     }
 
@@ -161,7 +166,7 @@ class TestRunner extends React.Component {
      */
     getPreviousSectionId() {
         const currentSectionPos = this.getActiveSection().position;
-        const prevSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => v.position === currentSectionPos - 1)[0];
+        const prevSection = Object.entries(this.state.sectionsMap).filter(([k, v]) => k && v.position === currentSectionPos - 1)[0];
         return prevSection ? prevSection[0] : null;
     }
 
@@ -221,7 +226,7 @@ class TestRunner extends React.Component {
         console.log('moveTo', sectionId, pos);
         if (typeof sectionId === 'undefined' || typeof pos === 'undefined') return;
 
-        const itemId = Object.entries(this.getItems(sectionId)).filter(([k,v]) => v.position === pos )[0][0];
+        const itemId = Object.entries(this.getItems(sectionId)).filter(([k,v]) => k && v.position === pos )[0][0];
         this.showItem({ sectionId, itemId });
     }
 
@@ -261,5 +266,7 @@ class TestRunner extends React.Component {
         );
     }
 }
+
+TestRunner.propTypes = propTypes;
 
 export default TestRunner;

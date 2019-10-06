@@ -1,4 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    text: PropTypes.string.required,
+    group: PropTypes.string.required,
+    letter: PropTypes.string,
+    eliminable: PropTypes.bool,
+    response: PropTypes.string,
+    setResponse: PropTypes.func
+};
+
+const defaultProps = {
+    eliminable: false
+};
 
 function Choice(props) {
     return (
@@ -17,5 +31,8 @@ function Choice(props) {
         </div>
     );
 }
+
+Choice.propTypes = propTypes;
+Choice.defaultProps = defaultProps;
 
 export default Choice;

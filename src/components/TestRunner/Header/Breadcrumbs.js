@@ -1,4 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+const propTypes = {
+    testTitle: PropTypes.string.isRequired,
+    sectionTitle: PropTypes.string.isRequired,
+    sectionNo: PropTypes.number.isRequired,
+    sectionsTotal: PropTypes.number.isRequired,
+};
 
 function Breadcrumbs({ testTitle, sectionTitle, sectionNo, sectionsTotal}) {
     return (
@@ -9,5 +17,7 @@ function Breadcrumbs({ testTitle, sectionTitle, sectionNo, sectionsTotal}) {
         </aside>
     );
 }
+
+Breadcrumbs.propTypes = propTypes;
 
 export default Breadcrumbs;

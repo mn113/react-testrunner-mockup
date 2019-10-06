@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FiMenu } from "react-icons/fi";
 import Breadcrumbs from './Breadcrumbs';
 import ToolMenu from './ToolMenu/ToolMenu';
+
+const propTypes = {
+  testTitle: PropTypes.string,
+  sectionData: PropTypes.object.isRequired,
+  toggleTheme: PropTypes.func
+};
 
 function Header(props) {
   return (
@@ -22,5 +29,7 @@ function Header(props) {
     </header>
   );
 }
+
+Header.propTypes = propTypes;
 
 export default Header;
