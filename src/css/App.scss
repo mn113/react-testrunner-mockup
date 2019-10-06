@@ -61,11 +61,9 @@
     }
 
     .toolMenu {
-        // position: absolute;
-        // top: 10px;
-        // right: 20px;
         margin-left: auto;
         margin-right: 15px;
+        cursor: pointer;
 
         & > svg {
             font-size: 24px;
@@ -73,23 +71,32 @@
             color: #767676;
         }
         .popup-menu {
-            display: none;
             background: white;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 1px 1px #999;
-            width: 10rem;
+            box-shadow: 0 0 4px 1px rgba(0,0,0,0.2);
+            width: 12rem;
             position: absolute;
             top: 30px;
-            right: 10px;
-        }
-        &:hover .popup-menu {
-            display: block;
-        }
-        button {
-            display: block;
-            width: 100%;
-            &:hover {
-                background-color: #ccc;
+            right: 15px;
+            opacity: 1;
+            transition: 0.4s opacity;
+            &.qti-visually-hidden {
+                opacity: 0;
+            }
+
+            button {
+                display: block;
+                padding: 0.4rem;
+                width: 100%;
+                background: white;
+                border-bottom: 1px solid #999;
+                &:hover,
+                &:focus {
+                    background-color: #cce0f8;
+                }
+                &:focus {
+                    outline: 1px solid #767676;
+                    outline-offset: -4px;
+                }
             }
         }
     }
