@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-    text: PropTypes.string.required,
-    group: PropTypes.string.required,
+    text: PropTypes.string,
+    group: PropTypes.string,
     letter: PropTypes.string,
     eliminable: PropTypes.bool,
     response: PropTypes.string,

@@ -96,18 +96,39 @@
 }
 
 
+@keyframes translateRight {
+    0%    { transform: translateX(0); }
+    49.9% { transform: translateX(2000px); }
+    50%   { transform: translateX(-2000px); }
+    100%  { transform: translateX(0); }
+}
+@keyframes translateLeft {
+    0%    { transform: translateX(0); }
+    49.9% { transform: translateX(-2000px); }
+    50%   { transform: translateX(2000px); }
+    100%  { transform: translateX(0); }
+}
+
 /**
  * ITEM
  */
 main {
     flex-grow: 1;
     width: 100%;
+    overflow-x: hidden;
     overflow-y: auto;
 
     .qti-itemBody {
         width: 60%;
         margin: 0 auto;
         line-height: 1.6;
+
+        &.anim-translateRight {
+            animation: translateRight .6s 1;
+        }
+        &.anim-translateLeft {
+            animation: translateLeft .6s 1;
+        }
 
         .qti-choice {
             display: flex;

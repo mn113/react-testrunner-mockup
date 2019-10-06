@@ -31,6 +31,7 @@ class TestRunner extends React.Component {
             sectionsMap: props.data.testMap.parts["testPart-1"].sections,
             activeSectionId: props.data.testContext.sectionId,
             activeItemId: props.data.testContext.itemIdentifier,
+            itemAnimation: '',
             bookmarks: {},
             responses: {}
         };
@@ -93,6 +94,25 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     showItem({ sectionId, itemId }) {
+        console.log('Go to', sectionId, 'from', this.state.activeSectionId, 'and', itemId, 'from', this.state.activeItemId);
+
+        // which way to animate?
+        if (sectionId < this.state.activeSectionId) {
+            this.setState({ itemAnimation: 'translateRight' });
+        }
+        else if (sectionId > this.state.activeSectionId) {
+            this.setState({ itemAnimation: 'translateLeft' });
+        }
+        else if (itemId < this.state.activeItemId) {
+            this.setState({ itemAnimation: 'translateRight' });
+        }
+        else if (itemId > this.state.activeItemId) {
+            this.setState({ itemAnimation: 'translateLeft' });
+        }
+        else {
+            this.setState({ itemAnimation: '' });
+        }
+
         this.setState(() => ({
             activeSectionId: sectionId,
             activeItemId: itemId
@@ -240,11 +260,12 @@ class TestRunner extends React.Component {
                     // funcs
                     toggleTheme={this.toggleTheme}>
                 </Header>
-                <main id="main" className="qti-itemBody">
+                <main id="main">
                     <Item
                         itemData={this.state.sectionsMap[this.state.activeSectionId].items[this.state.activeItemId]}
                         sectionId={this.state.activeSectionId}
                         itemId={this.state.activeItemId}
+                        itemAnimation={this.state.itemAnimation}
                         isBookmarked={this.state.bookmarks[`${this.state.activeSectionId}_${this.state.activeItemId}`]}
                         response={this.state.responses[`${this.state.activeSectionId}_${this.state.activeItemId}`]}
                         // funcs
