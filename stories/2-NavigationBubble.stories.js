@@ -1,8 +1,7 @@
 import React from 'react';
-
+import { addDecorator } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
-import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, select, number } from '@storybook/addon-knobs';
 
 import NavigationBubble from '../src/components/TestRunner/Navigation/NavigationBubble';
 
@@ -10,15 +9,7 @@ export default {
     title: 'NavigationBubble',
 };
 
-const stories = storiesOf('NavigationBubble', module);
-stories.addDecorator(withKnobs);
-
-// Knobs for React props
-stories.add('with a button', () => (
-    <button disabled={boolean('Disabled', false)} >
-      {text('Label', 'Hello Storybook')}
-    </button>
-));
+addDecorator(withKnobs);
 
 const itemData = {
     "title": "How to Navigate",
@@ -31,12 +22,14 @@ const itemData = {
     "viewed": false
 };
 
+const sectionId = 'section-1';
+const itemId = 'item-1';
+
 export const navBtn = () => {
-    const sectionId = 'section-1';
-    const itemId = 'item-1';
-    const theme = 'dark';
+    const theme = 'light';
+    // Wrapping is for styling - could be avoided with component-scoped CSS
     return (
-        <div className={`test-runner theme-${theme}`}>
+        <div className={`test-runner theme-${select('theme', { light: 'light', dark: 'dark' }, 'light')}`}>
             <nav className="testNav">
                 <ol className="testNav-sections">
                     <li className="nav-section">
@@ -47,11 +40,11 @@ export const navBtn = () => {
                                     itemId={itemId}
                                     itemData={itemData}
                                     sectionId={sectionId}
-                                    isBookmarked={false}
-                                    isInformational={false}
-                                    isActive={false}
-                                    isViewed={false}
-                                    isAnswered={false}
+                                    isBookmarked={boolean('isBookmarked', false)}
+                                    isInformational={boolean('isInformational', false)}
+                                    isActive={boolean('isActive', false)}
+                                    isViewed={boolean('isViewed', false)}
+                                    isAnswered={boolean('isAnswered', false)}
                                     // funcs
                                     showItem={action("show item!")}
                                 />
@@ -64,39 +57,6 @@ export const navBtn = () => {
     );
 };
 
-stories.add('basic', () => {
-    const sectionId = 'section-1';
-    const itemId = 'item-1';
-    const theme = 'dark';
-    return (
-        <div className={`test-runner theme-${theme}`}>
-            <nav className="testNav">
-                <ol className="testNav-sections">
-                    <li className="nav-section">
-                        <fieldset>
-                            <ol>
-                                <NavigationBubble
-                                    key={itemId}
-                                    itemId={itemId}
-                                    itemData={itemData}
-                                    sectionId={sectionId}
-                                    isBookmarked={false}
-                                    isInformational={false}
-                                    isActive={boolean('isActive', false)}
-                                    isViewed={false}
-                                    isAnswered={false}
-                                    // funcs
-                                    showItem={action("show item!")}
-                                />
-                            </ol>
-                        </fieldset>
-                    </li>
-                </ol>
-            </nav>
-        </div>
-    );
-});
-
 navBtn.story = {
-    name: 'basic',
+     name: 'basic'
 };
