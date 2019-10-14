@@ -16,6 +16,11 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
         include: path.resolve(__dirname, '../'),
       },
+      {
+        test: /\.stories\.jsx?$/,
+        loaders: [require.resolve('@storybook/source-loader')],
+        enforce: 'pre'
+      }
     ],
   },
 };
