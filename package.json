@@ -2,6 +2,7 @@
   "name": "react-testrunner-mockup",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "http://oatymart.github.io/react-testrunner-mockup",
   "engines": {
     "node": ">= 8.16.0"
   },
