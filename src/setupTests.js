@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom/extend-expect';
-console.log = () => {};
+console.log = () => {}; // mute unwanted CLI noise

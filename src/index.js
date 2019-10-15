@@ -5,7 +5,6 @@ import TestRunner from './components/TestRunner/TestRunner';
 import * as serviceWorker from './serviceWorker';
 
 import 'normalize.css';
-import './css/index.css';
 import './css/App.scss';
 import './css/tao-a11y-styles.css';
 

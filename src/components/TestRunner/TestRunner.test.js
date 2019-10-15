@@ -4,6 +4,10 @@ import TestRunner from './TestRunner';
 
 import data from '../../data/testData.json';
 
+it('exists', () => {
+    // allows tests to run with the block below commented
+});
+
 // it('renders without crashing', () => {
 //   const div = document.createElement('div');
 //   ReactDOM.render(<TestRunner data={data} />, div);
