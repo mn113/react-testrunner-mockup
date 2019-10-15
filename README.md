@@ -2,6 +2,11 @@
 
 This Single-Page Web App was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and later "ejected" to a basic Webpack + React app.
 
+## Live links
+
+- **[The App](https://oatymart.github.io/react-testrunner-mockup)**
+- [The Storybook](https://oatymart.github.io/react-testrunner-mockup/storybook)
+
 ## Design resources
 
 - [Design mockup](docs/ux_mockup.png)
@@ -10,7 +15,7 @@ This Single-Page Web App was bootstrapped with [Create React App](https://github
 ## Component Structure of the page
 
 ```
-TestRunner
+TestRunner [+Test]
 ├-JumpMenu
 ├-Header
 │ ├-Breadcrumbs
@@ -18,11 +23,11 @@ TestRunner
 │   └-ThemeSwitcher
 ├-Item
 │ └-Choice
-│ └-BookmarkTool
+│ └-BookmarkTool [+Test]
 └-TestNavigation
   ├-NavigationButton
   ├-NavSection
-  │ └-NavigationBubble
+  │ └-NavigationBubble [+Test +Story]
   └-OverviewButton
 ```
 
@@ -35,10 +40,10 @@ TestRunner
 - The top-level component, `<TestRunner>`, fetches the test state from a static JSON file
 - The `<TestRunner>` also tracks related app state and all of the functions which can change it.
 - Top-level functions are passed down to the necessary child components to call back with. App state is propagated down through props in the classical React way.
-- I'm not in love with the functions-as-props pattern, and would prefer to migrate to a Pub-Sub or event-driven pattern using a third-party library.
-- The navigation functions are overly complex as I ended up using the section and item identifier strings as keys, rather than a number-based indexing.
+- I'm not in love with the functions-as-props pattern - if I had time I would try migrating to a Pub-Sub or event-driven pattern using a third-party library.
+- The test navigation functions are overly complex as I ended up using the section and item identifier strings as keys, rather than a number-based indexing. In TAO this is backend anyway.
 - No pre-made third-party components apart from icons from [`react-icons`](https://react-icons.netlify.com)
-- PropTypes used, but not required
+- `PropTypes` used, but not required
 
 ### Styles
 
@@ -55,6 +60,10 @@ TestRunner
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Necessary first step to install dependencies.
 
 ### `yarn start`
 
@@ -89,4 +98,7 @@ The Storybook app will run on [http://localhost:6006](http://localhost:6006).
 It has been configured with the following plugins:
 
 - knobs
+- actions
 - a11y
+- source
+- console
