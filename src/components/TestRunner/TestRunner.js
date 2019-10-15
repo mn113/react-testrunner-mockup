@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { set } from 'object-path-immutable';
 
+import ThemeContext from '../../ThemeContext';
 import JumpMenu from './Header/JumpMenu';
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -12,6 +13,7 @@ import '../../css/themes/dark.scss';
 
 const propTypes = {
     data: PropTypes.object.isRequired,
+    toggleTheme: PropTypes.func
 };
 
 class TestRunner extends React.Component {
@@ -19,7 +21,7 @@ class TestRunner extends React.Component {
     constructor(props) {
         console.log(props);
         super(props);
-        this.toggleTheme = this.toggleTheme.bind(this);
+        //this.toggleTheme = this.toggleTheme.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
         this.showItem = this.showItem.bind(this);
@@ -27,7 +29,7 @@ class TestRunner extends React.Component {
         this.setResponse = this.setResponse.bind(this);
 
         this.state = {
-            theme: 'light',
+            _theme: 'light',
             sectionsMap: props.data.testMap.parts["testPart-1"].sections,
             activeSectionId: props.data.testContext.sectionId,
             activeItemId: props.data.testContext.itemIdentifier,
@@ -49,11 +51,11 @@ class TestRunner extends React.Component {
      * Toggles the test runner theme stylesheet
      * @affects {TestRunner.state}
      */
-    toggleTheme() {
-        this.setState((state) => ({
-            theme: state.theme === 'light' ? 'dark' : 'light',
-        }));
-    }
+    // toggleTheme() {
+    //     this.setState((state) => ({
+    //         theme: state.theme === 'light' ? 'dark' : 'light',
+    //     }));
+    // }
 
     /**
      * Toggles the bookmark status for a specific item in the test runner
@@ -252,13 +254,13 @@ class TestRunner extends React.Component {
 
     render() {
         return (
-            <div className={`test-runner theme-${this.state.theme}`}>
+            <div className={`test-runner theme-${this.context}`}>
                 <JumpMenu></JumpMenu>
                 <Header
                     testTitle={this.props.data.testData.title}
                     sectionData={this.state.sectionsMap[this.state.activeSectionId]}
                     // funcs
-                    toggleTheme={this.toggleTheme}>
+                    toggleTheme={this.props.toggleTheme}>
                 </Header>
                 <main id="main">
                     <Item
@@ -287,6 +289,7 @@ class TestRunner extends React.Component {
         );
     }
 }
+TestRunner.contextType = ThemeContext;
 
 TestRunner.propTypes = propTypes;
 
