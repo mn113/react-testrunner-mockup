@@ -73,7 +73,8 @@
     "eslint-plugin-jest": "^22.17.0",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-react": "7.14.3",
-    "eslint-plugin-react-hooks": "^1.6.1"
+    "eslint-plugin-react-hooks": "^1.6.1",
+    "gh-pages": "^2.1.1"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -82,7 +83,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o build/storybook",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "extends": "@oat-sa/browserslist-config-tao"
