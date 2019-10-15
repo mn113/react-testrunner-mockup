@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TiInfoLarge } from 'react-icons/ti';
-import { FaBookmark } from "react-icons/fa";
+import { FaBookmark } from 'react-icons/fa';
 
 const propTypes = {
     showItem: PropTypes.func.isRequired,
@@ -23,21 +23,14 @@ const defaultProps = {
 function NavigationBubble(props) {
     return (
         <li className={'navBubble ' + (props.isActive ? 'active ' : '') + (props.isViewed ? 'viewed ' : '') + (props.isAnswered ? 'answered ' : '')}>
-            <label htmlFor="txt">
-                <input
-                    className="qti-visibility-hidden"
-                    role="link"
-                    aria-label={'Question ' + props.itemId + ' Answered'}
-                    type="radio"
-                    id="txt"
-                    value="txt"
-                />
-                <span className="bubble-content" onClick={props.showItem.bind(null, props)}>
-                    { props.isInformational && <TiInfoLarge className="informational"></TiInfoLarge> }
-                    { !props.isInformational && (props.itemData.positionInPart + 1).toString().padStart(2,'0') }
-                    { props.isBookmarked && <FaBookmark className="mini-indicator"></FaBookmark>}
-                </span>
-            </label>
+            <a
+                className="bubble-content"
+                aria-label={`Question ${props.itemId} ${props.isAnswered ? '(Answered)' : ''}`}
+                onClick={props.showItem.bind(null, props)}>
+                { props.isInformational && <TiInfoLarge className="informational"></TiInfoLarge> }
+                { !props.isInformational && (props.itemData.positionInPart + 1).toString().padStart(2,'0') }
+                { props.isBookmarked && <FaBookmark className="mini-indicator"></FaBookmark>}
+            </a>
         </li>
     );
 }

@@ -25,7 +25,7 @@ function TestNavigation(props) {
             <h2 className="qti-visually-hidden">Navigation</h2>
             <NavigationButton dir="next" move={props.moveForward}></NavigationButton>
             <NavigationButton dir="prev" move={props.moveBack}></NavigationButton>
-            <OverviewButton></OverviewButton>
+            <OverviewButton isFinalItem={props.activeSectionId === 'assessmentSection-3' && props.activeItemId === 'item-5'}></OverviewButton>
             <ol className="testNav-sections">
                 {Object.entries(props.sectionsMap).map(([sectionId, sectionData]) =>
                     <NavSection
