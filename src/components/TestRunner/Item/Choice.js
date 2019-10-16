@@ -32,7 +32,7 @@ function Choice(props) {
                     checked={props.response === props.letter}
                     onChange={props.setResponse.bind(null, props)}
                 />
-                {props.letter}. {props.text}
+                <span dangerouslySetInnerHTML={{ __html: `${props.letter}. ${props.text}` }}></span>
             </label>
             {props.eliminable && <button onClick={eliminate}>{isEliminated ? 'Une' : 'E'}liminate answer {props.letter}</button>}
         </div>

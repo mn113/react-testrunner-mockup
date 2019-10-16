@@ -21,7 +21,6 @@ class TestRunner extends React.Component {
     constructor(props) {
         console.log(props);
         super(props);
-        //this.toggleTheme = this.toggleTheme.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
         this.showItem = this.showItem.bind(this);
@@ -29,7 +28,6 @@ class TestRunner extends React.Component {
         this.setResponse = this.setResponse.bind(this);
 
         this.state = {
-            _theme: 'light',
             sectionsMap: props.data.testMap.parts["testPart-1"].sections,
             activeSectionId: props.data.testContext.sectionId,
             activeItemId: props.data.testContext.itemIdentifier,
@@ -46,16 +44,6 @@ class TestRunner extends React.Component {
             itemId: this.state.activeItemId
         });
     }
-
-    /**
-     * Toggles the test runner theme stylesheet
-     * @affects {TestRunner.state}
-     */
-    // toggleTheme() {
-    //     this.setState((state) => ({
-    //         theme: state.theme === 'light' ? 'dark' : 'light',
-    //     }));
-    // }
 
     /**
      * Toggles the bookmark status for a specific item in the test runner
@@ -168,7 +156,6 @@ class TestRunner extends React.Component {
      * @returns {Object} items as { id: {data} }
      */
     getItems(sectionId) {
-        console.log('gi', sectionId);
         return this.state.sectionsMap[sectionId].items;
     }
 
@@ -205,7 +192,6 @@ class TestRunner extends React.Component {
      * Moves forward to the next item or section
      */
     moveForward() {
-        console.log('mf');
         const currentPos = this.getActiveItem().positionInSection;
         const currentSection = this.getActiveSection();
         const maxPos = Object.keys(currentSection.items).length - 1;
@@ -223,7 +209,6 @@ class TestRunner extends React.Component {
      * Moves back to the previous item or section
      */
     moveBack() {
-        console.log('mb');
         const currentPos = this.getActiveItem().positionInSection;
         const minPos = 0;
         if (currentPos > minPos) {
@@ -245,7 +230,6 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     moveTo(sectionId, pos) {
-        console.log('moveTo', sectionId, pos);
         if (typeof sectionId === 'undefined' || typeof pos === 'undefined') return;
 
         const itemId = Object.entries(this.getItems(sectionId)).filter(([k,v]) => k && v.position === pos )[0][0];

@@ -79,16 +79,7 @@ $themeRedPale: #6b2b22;
     .testNav {
         background-color: #222;
         box-shadow: 0 -2px 4px 1px rgba(255,0,0,0.2);
-        .noverview-button {
-            background: #444;
-            border: 2px solid #767676;
-            color: white;
-            &:hover {
-                background-color: $themeRedHighlight;
-                border-color: $themeRedHighlight;
-                color: black;
-            }
-        }
+
         fieldset {
             background: #222;
             background: linear-gradient(0deg, rgba(34,34,34,0) 0%, rgba(34,34,34,0) 49%, rgba(153,153,153,1) 50%, rgba(34,34,34,0) 51%, rgba(34,34,34,0) 100%);

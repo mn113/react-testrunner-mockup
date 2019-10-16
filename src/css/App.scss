@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,bold,italic&subset=latin,latin-ext');
-
+@import './fonts.css';
 
 .test-runner {
     font-family: 'Source Sans Pro', Arial, sans-serif;
@@ -209,18 +208,6 @@ main {
     }
     button.next {
         order: 4;
-    }
-    .noverview-button {
-        height: 36px;
-        width: unset;
-        border-radius: 18px;
-        text-transform: uppercase;
-        order: 3;
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        line-height: 1;
-        padding: 0.2rem 0.6rem;
     }
     & > button > svg {
         font-size: 20px;
