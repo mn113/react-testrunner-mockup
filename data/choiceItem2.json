@@ -1,0 +1,74 @@
+{
+    "identifier": "RC123413",
+    "qtiClass": "assessmentItem",
+    "attributes": {
+        "identifier": "RC123413",
+        "title": "Item-2",
+        "label": "",
+        "xml:lang": "en-US"
+    },
+    "body": {
+        "body": "<p>Every day, millions of shoppers hit the stores in full force—both online and on foot—searching frantically for the perfect gift. Last year, Americans spent over $30 billion at retail stores in the month of December alone. Aside from purchasing holiday gifts, most people regularly buy presents for other occasions throughout the year, including weddings, birthdays, anniversaries, graduations, and baby showers.<\/p>",
+        "elements": {
+            "interaction_choiceinteraction_5641f69009a40825558139": {
+                "qtiClass": "choiceInteraction",
+                "attributes": {
+                    "responseIdentifier": "RESPONSE",
+                    "shuffle": false,
+                    "maxChoices": 1,
+                    "minChoices": 1,
+                    "orientation": "vertical"
+                },
+                "choices": {
+                    "choice_simplechoice_5641f6900a08e629980725": {
+                        "identifier": "A",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "A",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "functions as a form of self-expression"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900ab20193935586": {
+                        "identifier": "B",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "B",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "is an inexpensive way to show appreciation"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900b3ea391149047": {
+                        "identifier": "C",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "C",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "requires the gift-recipient to reciprocate"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900bc91624342632": {
+                        "identifier": "D",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "D",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "makes Christmas a success"
+                        }
+                    }
+                },
+                "prompt": {
+                    "body": "The authors indicate that people value gift-giving because they feel it..."
+                }
+            }
+        }
+    }
+}

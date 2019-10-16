@@ -1,0 +1,234 @@
+{
+    "success": true,
+    "testData": {
+        "title": "Super Test",
+        "identifier": "Test-3",
+        "className": "assessmentTest",
+        "toolName": "tao",
+        "exclusivelyLinear": false,
+        "hasTimeLimits": false,
+        "config": {
+            "timerWarning": {
+                "assessmentItemRef": null,
+                "assessmentSection": null,
+                "testPart": null
+            },
+            "progress-indicator": "percentage",
+            "progress-indicator-scope": "testSection",
+            "progress-indicator-forced": false,
+            "test-taker-review": false,
+            "test-taker-review-region": "left",
+            "test-taker-review-force-title": false,
+            "test-taker-review-item-title": "Item %d",
+            "test-taker-review-scope": "test",
+            "test-taker-review-prevents-unseen": true,
+            "test-taker-review-can-collapse": false,
+            "exitButton": false,
+            "next-section": false,
+            "reset-timer-after-resume": false
+        }
+    },
+    "testContext": {
+        "state": 1,
+        "navigationMode": 0,
+        "submissionMode": 0,
+        "remainingAttempts": -1,
+        "isAdaptive": false,
+        "isTimeout": false,
+        "itemIdentifier": "item-1",
+        "itemSessionState": 1,
+        "needMapUpdate": false,
+        "isLast": false,
+        "itemPosition": 0,
+        "timeConstraints": [],
+        "testPartId": "testPart-1",
+        "sectionId": "assessmentSection-1",
+        "sectionTitle": "Section 1",
+        "numberItems": 2,
+        "numberCompleted": 0,
+        "numberPresented": 1,
+        "considerProgress": true,
+        "isDeepestSectionVisible": true,
+        "canMoveBackward": false,
+        "allowComment": false,
+        "allowSkipping": false,
+        "exitButton": false,
+        "logoutButton": true,
+        "categories": []
+    },
+    "testMap": {
+        "parts": {
+            "testPart-1": {
+                "title": "testPart-1",
+                "position": 0,
+                "isLinear": true,
+                "sections": {
+                    "assessmentSection-1": {
+                        "title": "Instructions",
+                        "position": 0,
+                        "items": {
+                            "item-1": {
+                                "title": "How to Navigate",
+                                "position": 0,
+                                "positionInPart": 0,
+                                "positionInSection": 0,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-2": {
+                                "title": "How to answer a question",
+                                "position": 1,
+                                "positionInPart": 1,
+                                "positionInSection": 1,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-3": {
+                                "title": "How to use Bookmarks",
+                                "position": 2,
+                                "positionInPart": 2,
+                                "positionInSection": 2,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            }
+                        },
+                        "stats": {
+                            "answered": 0,
+                            "viewed": 0
+                        }
+                    },
+                    "assessmentSection-2": {
+                        "title": "Science & Nature",
+                        "position": 1,
+                        "items": {
+                            "item-1": {
+                                "title": "The Maillard Reaction",
+                                "position": 0,
+                                "positionInPart": 3,
+                                "positionInSection": 0,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-2": {
+                                "title": "The Space Shuttle",
+                                "position": 1,
+                                "positionInPart": 4,
+                                "positionInSection": 1,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-3": {
+                                "title": "Newtonian Physics",
+                                "position": 2,
+                                "positionInPart": 5,
+                                "positionInSection": 2,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-4": {
+                                "title": "Planets and Moons",
+                                "position": 3,
+                                "positionInPart": 6,
+                                "positionInSection": 3,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-5": {
+                                "title": "Temperature Scales",
+                                "position": 4,
+                                "positionInPart": 7,
+                                "positionInSection": 4,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            }
+                        },
+                        "stats": {
+                            "answered": 0,
+                            "viewed": 0
+                        }
+                    },
+                    "assessmentSection-3": {
+                        "title": "History & Literature",
+                        "position": 2,
+                        "items": {
+                            "item-1": {
+                                "title": "Periods of History",
+                                "position": 0,
+                                "positionInPart": 8,
+                                "positionInSection": 0,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-2": {
+                                "title": "The Guillotine",
+                                "position": 1,
+                                "positionInPart": 9,
+                                "positionInSection": 1,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-3": {
+                                "title": "Shakespearean Characters",
+                                "position": 2,
+                                "positionInPart": 10,
+                                "positionInSection": 2,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-4": {
+                                "title": "Alexandre Dumas",
+                                "position": 3,
+                                "positionInPart": 11,
+                                "positionInSection": 3,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            },
+                            "item-5": {
+                                "title": "Richard III",
+                                "position": 4,
+                                "positionInPart": 12,
+                                "positionInSection": 4,
+                                "occurrence": 0,
+                                "remainingAttempts": -1,
+                                "answered": false,
+                                "viewed": false
+                            }
+                        },
+                        "stats": {
+                            "answered": 0,
+                            "viewed": 0
+                        }
+                    }
+                },
+                "stats": {
+                    "answered": 1,
+                    "viewed": 1
+                }
+            }
+        }
+    }
+}
