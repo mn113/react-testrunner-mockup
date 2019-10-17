@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { set } from 'object-path-immutable';
 
+import ThemeContext from '../../ThemeContext';
 import JumpMenu from './Header/JumpMenu';
 import Header from './Header/Header';
 import Item from './Item/Item';
@@ -12,14 +13,13 @@ import '../../css/themes/dark.scss';
 
 const propTypes = {
     data: PropTypes.object.isRequired,
+    toggleTheme: PropTypes.func
 };
 
 class TestRunner extends React.Component {
 
     constructor(props) {
-        console.log(props);
         super(props);
-        this.toggleTheme = this.toggleTheme.bind(this);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);
         this.showItem = this.showItem.bind(this);
@@ -27,7 +27,6 @@ class TestRunner extends React.Component {
         this.setResponse = this.setResponse.bind(this);
 
         this.state = {
-            theme: 'light',
             sectionsMap: props.data.testMap.parts["testPart-1"].sections,
             activeSectionId: props.data.testContext.sectionId,
             activeItemId: props.data.testContext.itemIdentifier,
@@ -43,16 +42,6 @@ class TestRunner extends React.Component {
             sectionId: this.state.activeSectionId,
             itemId: this.state.activeItemId
         });
-    }
-
-    /**
-     * Toggles the test runner theme stylesheet
-     * @affects {TestRunner.state}
-     */
-    toggleTheme() {
-        this.setState((state) => ({
-            theme: state.theme === 'light' ? 'dark' : 'light',
-        }));
     }
 
     /**
@@ -166,7 +155,6 @@ class TestRunner extends React.Component {
      * @returns {Object} items as { id: {data} }
      */
     getItems(sectionId) {
-        console.log('gi', sectionId);
         return this.state.sectionsMap[sectionId].items;
     }
 
@@ -203,7 +191,6 @@ class TestRunner extends React.Component {
      * Moves forward to the next item or section
      */
     moveForward() {
-        console.log('mf');
         const currentPos = this.getActiveItem().positionInSection;
         const currentSection = this.getActiveSection();
         const maxPos = Object.keys(currentSection.items).length - 1;
@@ -221,7 +208,6 @@ class TestRunner extends React.Component {
      * Moves back to the previous item or section
      */
     moveBack() {
-        console.log('mb');
         const currentPos = this.getActiveItem().positionInSection;
         const minPos = 0;
         if (currentPos > minPos) {
@@ -243,7 +229,6 @@ class TestRunner extends React.Component {
      * @affects {TestRunner.state}
      */
     moveTo(sectionId, pos) {
-        console.log('moveTo', sectionId, pos);
         if (typeof sectionId === 'undefined' || typeof pos === 'undefined') return;
 
         const itemId = Object.entries(this.getItems(sectionId)).filter(([k,v]) => k && v.position === pos )[0][0];
@@ -252,13 +237,13 @@ class TestRunner extends React.Component {
 
     render() {
         return (
-            <div className={`test-runner theme-${this.state.theme}`}>
+            <div className={`test-runner theme-${this.context}`}>
                 <JumpMenu></JumpMenu>
                 <Header
                     testTitle={this.props.data.testData.title}
                     sectionData={this.state.sectionsMap[this.state.activeSectionId]}
                     // funcs
-                    toggleTheme={this.toggleTheme}>
+                    toggleTheme={this.props.toggleTheme}>
                 </Header>
                 <main id="main">
                     <Item
@@ -287,6 +272,7 @@ class TestRunner extends React.Component {
         );
     }
 }
+TestRunner.contextType = ThemeContext;
 
 TestRunner.propTypes = propTypes;
 

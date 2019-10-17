@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestRunner from './TestRunner';
 
-import data from '../../data/testData.json';
+import data from '../../../public/data/testData.json';
 
 it('exists', () => {
     // allows tests to run with the block below commented

@@ -1,0 +1,74 @@
+{
+    "identifier": "RC123413",
+    "qtiClass": "assessmentItem",
+    "attributes": {
+        "identifier": "RC123413",
+        "title": "Item-3",
+        "label": "",
+        "xml:lang": "en-US"
+    },
+    "body": {
+        "body": "<div><p id=\"stimulus\">The history of mankind is an unfailing source of\ninspiration for every human being. But before knowing in-depth the\nhistory of the world, you should know its major periods.</p></div>",
+        "elements": {
+            "interaction_choiceinteraction_5641f69009a40825558139": {
+                "qtiClass": "choiceInteraction",
+                "attributes": {
+                    "responseIdentifier": "RESPONSE",
+                    "shuffle": false,
+                    "maxChoices": 1,
+                    "minChoices": 1,
+                    "orientation": "vertical"
+                },
+                "choices": {
+                    "choice_simplechoice_5641f6900a08e629980725": {
+                        "identifier": "A",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "A",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "5 roads"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900ab20193935586": {
+                        "identifier": "B",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "B",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "12 boulevards"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900b3ea391149047": {
+                        "identifier": "C",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "C",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "18 avenues"
+                        }
+                    },
+                    "choice_simplechoice_5641f6900bc91624342632": {
+                        "identifier": "D",
+                        "qtiClass": "simpleChoice",
+                        "attributes": {
+                            "identifier": "D",
+                            "fixed": false
+                        },
+                        "body": {
+                            "body": "100,000 superhighways"
+                        }
+                    }
+                },
+                "prompt": {
+                    "body": "How many roads must a man walk down, before you can call him a man?"
+                }
+            }
+        }
+    }
+}
