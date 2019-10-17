@@ -19,7 +19,6 @@ const propTypes = {
 class TestRunner extends React.Component {
 
     constructor(props) {
-        console.log(props);
         super(props);
         this.moveForward = this.moveForward.bind(this);
         this.moveBack = this.moveBack.bind(this);

@@ -14,11 +14,10 @@ const propTypes = {
     bookmarkItem: PropTypes.func
 };
 
-const baseUrl = '/data';
+const baseUrl = 'data';
 const itemDataFiles = ['choiceItem1.json', 'choiceItem2.json', 'choiceItem3.json'];
 
 function Item(props) {
-    // let qtiItemData = null;
     const [qtiItemData, setQtiItemData] = useState(null); // to block initial render
 
     // Similar to componentDidMount and componentDidUpdate:
@@ -31,8 +30,6 @@ function Item(props) {
         fetch(`${baseUrl}/${itemDataFiles[props.itemData.position % 3]}`)
             .then(res => res.json())
             .then((data) => {
-                console.log(data.attributes.title, Object.values(data.body.elements)[0].prompt.body);
-                // qtiItemData = data;
                 setQtiItemData(data); // to force render
             });
 

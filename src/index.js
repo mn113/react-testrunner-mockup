@@ -9,7 +9,7 @@ import 'normalize.css';
 import './css/App.scss';
 import './css/tao-a11y-styles.css';
 
-const baseUrl = '/data';
+const baseUrl = 'data';
 const testDataFile = 'testData.json';
 
 function App() {
